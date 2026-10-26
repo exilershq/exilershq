@@ -1,1 +1,428 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Exilers HQ</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}body{background:#050505;color:#fff;scroll-behavior:smooth}.loader{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999}.spin{width:80px;height:80px;border:6px solid #333;border-top:6px solid #ff0055;border-radius:50%;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}nav{position:fixed;top:0;width:100%;padding:15px 30px;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);display:flex;justify-content:space-between;z-index:1000}nav a{color:#fff;text-decoration:none;margin:0 10px}.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle,#6d00ff33,#050505)}.hero img{width:220px;border-radius:50%;box-shadow:0 0 40px #ff0055}.hero h1{font-size:4rem;background:linear-gradient(90deg,#9a00ff,#ff0055);-webkit-background-clip:text;color:transparent}.btn{padding:12px 24px;background:linear-gradient(90deg,#9a00ff,#ff0055);border-radius:30px;color:#fff;text-decoration:none;display:inline-block;margin-top:20px}section{padding:90px 10%}.card{background:rgba(255,255,255,.06);padding:25px;border-radius:20px;backdrop-filter:blur(12px);margin-top:20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}footer{text-align:center;padding:30px;background:#111}</style></head><body><div class="loader" id="loading"><div class="spin"></div></div><nav><h2>EXILERS HQ</h2><div><a href="#about">About</a><a href="#tour">Tournament</a><a href="#results">Results</a><a href="#staff">Staff</a><a href="#music">Music</a></div></nav><section class="hero"><img src="logo.png" onerror="this.style.display='none'"><h1>EXILERS HQ</h1><p>Compete • Dominate • Exile</p><a class="btn" href="#about">Explore</a></section><section id="about"><h2>About Server</h2><div class="card">One of the biggest gaming and event communities. Join tournaments, community events and competitive matches.</div></section><section id="tour"><h2>Tournament Details</h2><div class="card">Upcoming Events, brackets, prize pools and registrations go here.</div></section><section id="results"><h2>Match Results</h2><div class="card">Update latest winners and scores here.</div></section><section id="staff"><h2>Staff Team</h2><div class="grid"><div class="card"><h3>Owners</h3><p>Hassan Syed<br>Burhan<br>Ibrahim</p></div><div class="card"><h3>Management</h3><p>Zindagi<br>Amin<br>Faizan</p></div></div></section><section id="music"><h2>Music Hub</h2><div class="card"><p>Replace Spotify and YouTube embeds with your own links.</p><iframe style="width:100%;height:380px;border:none" src="https://www.youtube.com/embed/jfKfPfyJRdk"></iframe></div></section><footer>© Exilers HQ</footer><script>window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loading').remove()},800)});</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exilers HQ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#040404;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* Loading */
+
+#loading{
+position:fixed;
+inset:0;
+background:#000;
+z-index:99999;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.loader{
+width:100px;
+height:100px;
+border-radius:50%;
+border:5px solid #222;
+border-top:5px solid #ff0066;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* Animated BG */
+
+.background{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-2;
+background:
+radial-gradient(circle at 20% 20%,#8c00ff33,transparent),
+radial-gradient(circle at 80% 30%,#ff005533,transparent),
+radial-gradient(circle at 50% 80%,#7300ff22,transparent),
+#040404;
+}
+
+.orb{
+position:absolute;
+border-radius:50%;
+filter:blur(90px);
+animation:float 12s infinite ease-in-out;
+}
+
+.orb1{
+width:300px;
+height:300px;
+background:#8c00ff55;
+left:10%;
+top:10%;
+}
+
+.orb2{
+width:300px;
+height:300px;
+background:#ff005555;
+right:10%;
+bottom:10%;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-50px);
+}
+}
+
+/* Navbar */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+backdrop-filter:blur(20px);
+background:rgba(0,0,0,.4);
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+background:linear-gradient(90deg,#9600ff,#ff0066);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+nav a:hover{
+color:#ff0066;
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+flex-direction:column;
+padding:30px;
+}
+
+.hero img{
+width:220px;
+border-radius:50%;
+box-shadow:0 0 40px #ff006688;
+animation:float 4s infinite ease-in-out;
+}
+
+.hero h1{
+font-size:5rem;
+font-weight:800;
+margin-top:25px;
+background:linear-gradient(90deg,#9600ff,#ff0066);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+max-width:800px;
+margin-top:15px;
+font-size:1.2rem;
+color:#ddd;
+}
+
+.hero-buttons{
+margin-top:25px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 28px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:.4s;
+}
+
+.primary{
+background:linear-gradient(90deg,#9600ff,#ff0066);
+color:white;
+}
+
+.secondary{
+border:1px solid #666;
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+/* Stats */
+
+.stats{
+padding:80px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.1);
+padding:35px;
+border-radius:25px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px #ff006655;
+}
+
+.card h2{
+font-size:40px;
+margin-bottom:10px;
+background:linear-gradient(90deg,#9600ff,#ff0066);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+bottom:30px;
+right:30px;
+max-width:350px;
+padding:20px;
+background:rgba(20,20,20,.95);
+border-left:5px solid #ff0066;
+border-radius:15px;
+z-index:999;
+animation:slideIn 1s;
+}
+
+@keyframes slideIn{
+from{
+transform:translateX(400px);
+}
+to{
+transform:translateX(0);
+}
+}
+
+.popup button{
+margin-top:10px;
+padding:10px 15px;
+border:none;
+background:#ff0066;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* Discord */
+
+.discord-btn{
+position:fixed;
+bottom:30px;
+left:30px;
+background:#5865F2;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+z-index:900;
+box-shadow:0 0 25px #5865F2;
+}
+
+/* Section */
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+font-size:3rem;
+margin-bottom:30px;
+background:linear-gradient(90deg,#9600ff,#ff0066);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+iframe{
+width:100%;
+height:400px;
+border:none;
+border-radius:20px;
+}
+
+footer{
+padding:50px;
+text-align:center;
+background:#111;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+nav ul{
+display:none;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="loading">
+<div class="loader"></div>
+<h2 style="margin-top:20px;">Loading Exilers HQ...</h2>
+</div>
+
+<div class="background">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+</div>
+
+<nav>
+
+<div class="logo">EXILERS HQ</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#tournament">Tournament</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#staff">Staff</a></li>
+<li><a href="#music">Music</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<img src="logo.png" alt="Logo">
+
+<h1>EXILERS HQ</h1>
+
+<p>
+One of the biggest gaming communities. Tournaments, Events,
+Competitive Matches & Community Activities.
+</p>
+
+<div class="hero-buttons">
+<a href="#about" class="btn primary">Explore Server</a>
+<a href="#" class="btn secondary">Join Discord</a>
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="card">
+<h2>5000+</h2>
+<p>Community Members</p>
+</div>
+
+<div class="card">
+<h2>100+</h2>
+<p>Events Hosted</p>
+</div>
+
+<div class="card">
+<h2>50+</h2>
+<p>Tournaments</p>
+</div>
+
+<div class="card">
+<h2>24/7</h2>
+<p>Active Community</p>
+</div>
+
+</section>
+
+<!-- Continue your About, Tournament, Results,
+Staff and Music sections below this -->
+
+<a href="#" class="discord-btn">Join Discord</a>
+
+<div class="popup" id="popup">
+<h3>🔥 Exilers Championship</h3>
+<p>Registrations are now open.</p>
+<button onclick="document.getElementById('popup').style.display='none'">
+Close
+</button>
+</div>
+
+<footer>
+<h2>EXILERS HQ</h2>
+<p>The Ultimate Gaming Community</p>
+</footer>
+
+<script>
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+document.getElementById("loading").style.display="none";
+},1200);
+
+});
+
+</script>
+
+</body>
+</html>

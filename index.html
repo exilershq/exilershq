@@ -3,601 +3,1166 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000">
-<meta name="description" content="EXILERS HQ — Gaming, tournaments, events and community.">
-<title>EXILERS HQ | Beyond the Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="EXILERS HQ — Competitive gaming, elite tournaments, unforgettable events, and a community built to dominate.">
+<title>EXILERS HQ — Enter The Extraordinary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--card:#0b0b0b;--white:#fff;--muted:#aaa;--line:#ffffff1c;--glass:#ffffff08;--radius:16px}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.65;overflow-x:hidden}
+:root{
+  --black:#000;--bg:#050505;--panel:#0a0a0a;--panel2:#101010;
+  --white:#fff;--muted:#8c8c8c;--line:rgba(255,255,255,.12);
+  --soft:rgba(255,255,255,.045);--font:"Space Grotesk",sans-serif;
+  --display:"Barlow Condensed",sans-serif;--ease:cubic-bezier(.2,.75,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{background:var(--bg);color:var(--white);font-family:var(--font);overflow-x:hidden;cursor:none}
+body.loading{overflow:hidden}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{color:inherit}
-::selection{background:#fff;color:#000}
-.container{width:min(1180px,calc(100% - 40px));margin:auto}
-section{padding:100px 0;position:relative}
-h1,h2,h3,p{margin-top:0}
-h2{font-size:clamp(2.3rem,5vw,4.5rem);line-height:1.05;letter-spacing:-.055em;margin-bottom:20px}
-h2 span{color:#777}
-p{color:var(--muted)}
-.kicker{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#aaa;font-weight:800}
-.kicker:before{content:"";display:inline-block;width:24px;height:1px;background:#fff;vertical-align:middle;margin-right:10px}
-.intro{max-width:650px;margin-bottom:38px}
-.glass{background:linear-gradient(135deg,#ffffff0c,#ffffff03);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 20px;min-height:47px;border:1px solid #ffffff32;border-radius:8px;background:#ffffff06;font-weight:750;font-size:.85rem;transition:.25s;cursor:pointer}
-.btn:hover{background:#fff;color:#000;transform:translateY(-3px);box-shadow:0 0 30px #ffffff1c}
-.btn.white{background:#fff;color:#000;border-color:#fff}
-.btn.white:hover{background:#ddd}
-.grid{display:grid;gap:18px}
-.muted{color:#999}
-#particles{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 0,#222 0,transparent 48%),#000}
-.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 9px #fff;opacity:0;animation:rise linear infinite}
-.orb{position:absolute;border:1px solid #ffffff10;border-radius:25px;transform:rotate(35deg);animation:float 10s ease-in-out infinite}
-.orb.a{width:110px;height:110px;top:28%;left:7%}
-.orb.b{width:170px;height:170px;right:6%;top:65%;animation-delay:-4s}
-#loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#000;transition:opacity .7s,visibility .7s}
-#loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.loader-box{text-align:center;width:270px}
-.loader-box img{width:85px;height:85px;object-fit:contain;filter:drop-shadow(0 0 20px #ffffff60);animation:pulse 1.5s infinite}
-.loader-brand{font-size:1.2rem;font-weight:950;letter-spacing:.25em;margin:18px 0}
-.loader-track{height:2px;background:#222;overflow:hidden}
-.loader-track i{display:block;height:100%;background:white;width:0;animation:progress 1.6s ease forwards}
-.loader-small{font-size:.65rem;color:#777;letter-spacing:.2em;margin-top:12px;text-transform:uppercase}
-.nav-shell{position:fixed;z-index:1000;top:12px;left:0;right:0;padding:0 18px}
-nav{max-width:1300px;margin:auto;min-height:65px;padding:10px 16px;border:1px solid #ffffff18;border-radius:14px;background:#080808d9;backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:950;letter-spacing:.13em;white-space:nowrap}
-.brand img{width:36px;height:36px;object-fit:contain}
-.brand em{font-style:normal;color:#888}
-.nav-links{display:flex;gap:clamp(10px,1.5vw,22px);align-items:center}
-.nav-links a{font-size:.74rem;color:#aaa;transition:.2s}
-.nav-links a:hover,.nav-links a.active{color:#fff}
-.menu{display:none;width:42px;height:42px;background:transparent;border:1px solid var(--line);border-radius:8px}
-.menu span{display:block;width:18px;height:1px;background:#fff;margin:5px auto}
-.hero{min-height:100svh;display:flex;align-items:center;padding-top:135px;overflow:hidden}
-.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 76% 43%,#ffffff10,transparent 38%)}
-.hero-layout{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}
-.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 12px;border:1px solid var(--line);border-radius:50px;font-size:.7rem;text-transform:uppercase;letter-spacing:.13em;color:#ccc;animation:up .8s both}
-.dot{width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 12px white}
-.hero h1{font-size:clamp(4rem,10vw,8.7rem);line-height:.83;letter-spacing:-.09em;font-weight:950;margin:30px 0;animation:up .8s .1s both}
-.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1px white}
-.hero h3{font-size:clamp(1rem,2vw,1.3rem);margin-bottom:10px;animation:up .8s .2s both}
-.hero-copy{max-width:570px;animation:up .8s .3s both}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px;animation:up .8s .4s both}
-.hero-note{margin-top:35px;font-size:.68rem;letter-spacing:.18em;color:#777;text-transform:uppercase;animation:up .8s .5s both}
-.hero-art{min-height:430px;display:grid;place-items:center;position:relative;animation:zoom .9s .2s both}
-.ring{position:absolute;width:min(39vw,440px);aspect-ratio:1;border:1px solid #ffffff20;border-radius:50%;box-shadow:inset 0 0 80px #ffffff08,0 0 90px #ffffff08;animation:spin 40s linear infinite}
-.ring:before,.ring:after{content:"";position:absolute;inset:12%;border:1px solid #ffffff1e;border-radius:50%;transform:rotateX(65deg) rotate(30deg)}
-.ring:after{inset:24%;transform:rotateY(65deg) rotate(-25deg)}
-.hero-logo{position:relative;width:min(29vw,300px);height:min(29vw,300px);object-fit:contain;filter:drop-shadow(0 0 30px #ffffff30);animation:float 5s ease-in-out infinite}
-.art-label{position:absolute;bottom:12px;right:0;border:1px solid var(--line);background:#080808c9;padding:12px 16px;border-radius:9px;color:#aaa;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
-.art-label strong{display:block;color:white;font-size:.9rem}
-.ticker{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap}
-.ticker-track{display:flex;width:max-content;animation:ticker 32s linear infinite}
-.ticker span{padding:16px 25px;color:#aaa;font-size:.7rem;letter-spacing:.2em}
-.ticker b{color:white}
-.section-head{margin-bottom:40px}
-.stats{grid-template-columns:repeat(4,1fr)}
-.stat{padding:27px;border-radius:14px;transition:.3s}
-.stat:hover,.feature:hover,.event:hover,.staff:hover{transform:translateY(-6px);border-color:#ffffff50;box-shadow:0 15px 50px #ffffff07}
-.stat strong{font-size:clamp(2.2rem,4vw,3.4rem);letter-spacing:-.07em;line-height:1.1}
-.stat label{display:block;color:#999;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;margin-top:12px}
-.about-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
-.about-cards{grid-template-columns:repeat(2,1fr)}
-.feature{padding:25px;border-radius:14px;min-height:205px;transition:.3s}
-.icon{width:43px;height:43px;border:1px solid #ffffff25;border-radius:11px;display:grid;place-items:center;margin-bottom:22px;font-size:1.2rem}
-.feature h3{margin-bottom:8px}
-.feature p{font-size:.86rem;margin-bottom:0}
-.event-grid{grid-template-columns:repeat(3,1fr)}
-.event{border-radius:15px;overflow:hidden;transition:.3s}
-.event-art{height:150px;position:relative;overflow:hidden;background:linear-gradient(135deg,#333,#080808 72%);border-bottom:1px solid var(--line)}
-.event-art:before{content:"";position:absolute;width:170px;height:170px;right:10%;top:-60px;border:1px solid #ffffff30;transform:rotate(35deg)}
-.event-art:after{content:attr(data-num);position:absolute;bottom:-28px;left:14px;font-size:7rem;font-weight:950;line-height:1;color:#ffffff12}
-.event-tag{position:absolute;top:15px;left:15px;border:1px solid #ffffff35;padding:5px 9px;border-radius:4px;font-size:.62rem;text-transform:uppercase;letter-spacing:.12em}
-.event-body{padding:23px}
-.event-body p{font-size:.85rem}
-.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 0;border-block:1px solid var(--line);margin:15px 0}
-.meta small{display:block;color:#777;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase}
-.meta b{font-size:.8rem}
-.event-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.status{font-size:.68rem;color:#ccc}
-.status:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:white;margin-right:7px}
-.countdown-panel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:25px;margin-top:25px;padding:25px;border-radius:14px}
-.countdown-panel h3{margin:6px 0}
-.countdown{display:flex;gap:8px}
-.time{min-width:65px;text-align:center;padding:12px 8px;border:1px solid var(--line);border-radius:9px;background:#ffffff04}
-.time b{font-size:1.6rem;display:block;line-height:1.2}
-.time small{font-size:.58rem;letter-spacing:.13em;color:#888;text-transform:uppercase}
-.results{border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.result-head,.result{display:grid;grid-template-columns:1.3fr .6fr 1.2fr .7fr;gap:12px;align-items:center;padding:17px 22px}
-.result-head{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:#777;background:#ffffff06}
-.result{border-top:1px solid #ffffff12;transition:.2s}
-.result:hover{background:#ffffff05}
-.team{font-weight:750;font-size:.88rem}
-.score{font-weight:950;font-size:1.2rem}
-.winner{color:white}
-.result-date{font-size:.76rem;color:#888}
-.staff-group{margin-bottom:35px}
-.staff-group-title{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#999;margin-bottom:17px;display:flex;align-items:center;gap:14px}
-.staff-group-title:after{content:"";height:1px;flex:1;background:var(--line)}
-.staff-grid{grid-template-columns:repeat(3,1fr)}
-.staff{padding:22px;border-radius:14px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden;transition:.3s}
-.avatar{width:55px;height:55px;flex:0 0 55px;border-radius:12px;border:1px solid #ffffff2c;background:linear-gradient(135deg,#333,#070707);display:grid;place-items:center;font-weight:900}
-.staff h3{font-size:.95rem;margin:0 0 3px}
-.staff p{font-size:.72rem;margin:0}
-.role{margin-left:auto;font-size:.55rem;letter-spacing:.1em;color:#aaa;border:1px solid var(--line);padding:4px 6px;border-radius:4px}
-.gallery-grid{grid-template-columns:1.2fr 1fr 1fr;grid-auto-rows:190px}
-.gallery-item{position:relative;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:linear-gradient(145deg,#292929,#050505);cursor:pointer;min-height:130px;padding:0;text-align:left}
-.gallery-item:first-child{grid-row:span 2}
-.scene{position:absolute;inset:12%;border:1px solid #ffffff25;transform:rotate(-12deg);transition:transform .5s}
-.scene:after{content:"";position:absolute;inset:15%;border:1px solid #ffffff20;transform:rotate(40deg)}
-.gallery-item:hover .scene{transform:rotate(0) scale(1.08)}
-.gallery-item:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 90%,#5555,transparent 60%)}
-.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:35px 16px 15px;background:linear-gradient(transparent,#000e);font-weight:750;font-size:.85rem}
-.gallery-caption small{display:block;color:#aaa;font-weight:400}
-.lightbox{display:none;position:fixed;inset:0;z-index:5000;background:#000e;backdrop-filter:blur(14px);place-items:center;padding:20px}
-.lightbox.open{display:grid}
-.lightbox-box{width:min(760px,100%);height:min(65vh,480px);border:1px solid #ffffff30;border-radius:16px;position:relative;display:grid;place-items:center;background:radial-gradient(ellipse at center,#333,transparent 65%),#070707}
-.lightbox-box strong{font-size:clamp(1.5rem,5vw,3rem);letter-spacing:-.04em}
-.lightbox-close{position:absolute;top:15px;right:15px;width:40px;height:40px;border-radius:50%;background:#000;border:1px solid var(--line);font-size:1.3rem;cursor:pointer}
-.music-grid{grid-template-columns:repeat(2,1fr)}
-.music-card{padding:25px;border-radius:15px;min-width:0}
-.music-heading{display:flex;align-items:center;gap:13px;margin-bottom:22px}
-.music-icon{width:45px;height:45px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;font-size:1.3rem}
-.music-heading h3{margin:0}
-.music-heading p{font-size:.76rem;margin:3px 0 0}
-.field-label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:8px}
-.input-row{display:flex;gap:8px}
-input{width:100%;min-width:0;background:#000;border:1px solid #ffffff25;color:white;border-radius:8px;padding:12px;outline:none}
-input:focus{border-color:#fff}
-.embed{margin-top:17px;min-height:110px;padding:16px;border:1px solid var(--line);border-radius:10px;background:#050505;color:#777;font-size:.8rem;display:grid;place-items:center;text-align:center;overflow:hidden}
-.embed.has-frame{display:block;padding:0}
-.embed iframe{width:100%;display:block;border:0}
-.faq-list{max-width:850px}
-.faq-item{border-bottom:1px solid var(--line)}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:22px 0;background:none;border:0;text-align:left;font-weight:750;cursor:pointer}
-.plus{width:28px;height:28px;flex:0 0 28px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:.25s}
-.faq-q[aria-expanded=true] .plus{transform:rotate(45deg);background:#fff;color:#000}
-.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s}
-.faq-a>div{overflow:hidden}
-.faq-a p{padding:0 45px 20px 0;margin:0;font-size:.88rem}
-.faq-item.open .faq-a{grid-template-rows:1fr}
-.cta{padding:clamp(35px,7vw,85px);border-radius:22px;border:1px solid #ffffff25;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0,#333,transparent 65%),#080808}
-.cta:before,.cta:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #ffffff15;border-radius:50%;top:-220px;left:-90px}
-.cta:after{left:auto;top:auto;right:-100px;bottom:-240px}
-.cta>*{position:relative;z-index:1}
-.cta h2{margin:20px auto;max-width:750px}
-.cta p{max-width:600px;margin:0 auto 25px}
-.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-footer{border-top:1px solid var(--line);background:#050505;padding:55px 0 22px}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px;padding-bottom:35px}
-.footer-brand p{max-width:340px;font-size:.85rem}
-.footer-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:#777;margin-bottom:15px}
-.footer-links{display:grid;gap:9px}
-.footer-links a{font-size:.82rem;color:#aaa}
-.footer-links a:hover{color:white}
-.footer-bottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:15px;color:#666;font-size:.7rem}
-.announcement{position:fixed;right:20px;bottom:20px;z-index:2000;width:min(365px,calc(100% - 30px));padding:20px;border-radius:14px;box-shadow:0 20px 70px #000b;animation:up .4s}
-.announcement[hidden]{display:none}
-.announce-top{display:flex;justify-content:space-between;align-items:center;font-size:.64rem;color:#aaa;letter-spacing:.13em;text-transform:uppercase}
-.announce-close{background:none;border:0;font-size:1.3rem;cursor:pointer}
-.announcement h3{margin:12px 0 5px}
-.announcement p{font-size:.8rem}
-.floaters{position:fixed;right:18px;bottom:18px;z-index:1100;display:flex;flex-direction:column;gap:9px}
-.float{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;border:1px solid #ffffff35;background:#111e;backdrop-filter:blur(12px);transition:.25s;cursor:pointer}
-.float:hover{background:#fff;color:#000;transform:translateY(-3px)}
-.float.top{opacity:0;visibility:hidden}
-.float.top.visible{opacity:1;visibility:visible}
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:none}
-@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes zoom{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{50%{transform:scale(1.05);opacity:.8}}
-@keyframes progress{to{width:100%}}
+::selection{background:white;color:black}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#050505}
+::-webkit-scrollbar-thumb{background:#626262;border-radius:10px}
+#progress{position:fixed;top:0;left:0;height:2px;background:#fff;width:0;z-index:9999}
+.noise{position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");animation:noiseMove .2s steps(2) infinite}
+@keyframes noiseMove{0%{transform:translate(0,0)}25%{transform:translate(1%,-1%)}50%{transform:translate(-1%,1%)}75%{transform:translate(1%,1%)}}
+#world{position:fixed;inset:0;z-index:-3;pointer-events:none}
+.ambient{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 10%,rgba(255,255,255,.055),transparent 42%),linear-gradient(180deg,#050505 0%,#080808 50%,#030303 100%)}
+.mouse-glow{position:fixed;z-index:-1;width:400px;height:400px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.065),transparent 68%);transform:translate(-50%,-50%);opacity:.7}
+.cursor,.cursor-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:10001;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor{width:5px;height:5px;background:white}
+.cursor-ring{width:30px;height:30px;border:1px solid rgba(255,255,255,.55);transition:width .25s,height .25s,border-color .25s,background .25s}
+.cursor-ring.active{width:54px;height:54px;border-color:white;background:rgba(255,255,255,.04)}
+a,button,.interactive{cursor:none}
+#loader{position:fixed;inset:0;z-index:10000;background:#030303;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .9s var(--ease),visibility .9s}
+#loader.done{opacity:0;visibility:hidden}
+.loader-mark{font-family:var(--display);font-size:clamp(65px,15vw,160px);font-weight:900;letter-spacing:-.075em;line-height:.8;overflow:hidden}
+.loader-mark span{display:inline-block;animation:logoIn 1s var(--ease) both}
+.loader-mark span:nth-child(2){animation-delay:.08s}
+.loader-mark span:nth-child(3){animation-delay:.16s}
+.loader-mark span:nth-child(4){animation-delay:.24s}
+.loader-mark span:nth-child(5){animation-delay:.32s}
+.loader-mark span:nth-child(6){animation-delay:.4s}
+.loader-mark span:nth-child(7){animation-delay:.48s}
+.loader-mark span:nth-child(8){animation-delay:.56s}
+@keyframes logoIn{from{transform:translateY(120%) skewY(10deg);opacity:0;filter:blur(10px)}to{transform:translateY(0);opacity:1;filter:blur(0)}}
+.loader-bottom{position:absolute;bottom:9%;width:min(380px,75%);display:flex;justify-content:space-between;color:#777;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.loader-track{position:absolute;bottom:7%;height:1px;background:#222;width:min(380px,75%)}
+.loader-fill{height:100%;width:0;background:white;animation:load 1.8s .2s var(--ease) forwards}
+@keyframes load{to{width:100%}}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 5%;transition:padding .4s var(--ease),background .4s,border .4s}
+header.scrolled{padding:13px 5%;background:rgba(5,5,5,.78);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.09)}
+.nav{max-width:1600px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.08em;font-size:13px}
+.brand-icon{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.5);font-family:var(--display);font-size:24px;font-weight:900;transform:skew(-8deg)}
+.brand small{display:block;font-size:9px;color:#777;letter-spacing:.24em;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:11px;letter-spacing:.06em;color:#aaa;transition:color .25s;position:relative}
+.nav-links a:after{content:"";position:absolute;bottom:-7px;left:0;width:0;height:1px;background:white;transition:width .3s}
+.nav-links a:hover{color:white}
+.nav-links a:hover:after{width:100%}
+.nav-right{display:flex;align-items:center;gap:15px}
+.live-status{display:flex;align-items:center;gap:8px;color:#aaa;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.live-dot{width:6px;height:6px;background:#fff;border-radius:50%;box-shadow:0 0 12px #fff;animation:pulse 1.7s infinite}
+@keyframes pulse{50%{opacity:.35;box-shadow:0 0 2px #fff}}
+.menu-toggle{display:none;background:transparent;border:1px solid var(--line);padding:10px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:15px 21px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;overflow:hidden;isolation:isolate;transition:color .35s,border-color .35s,transform .3s var(--ease)}
+.btn:before{content:"";position:absolute;inset:0;background:#fff;transform:translateY(105%);transition:transform .4s var(--ease);z-index:-1}
+.btn:hover{color:#000;border-color:white;transform:translateY(-3px)}
+.btn:hover:before{transform:translateY(0)}
+.btn-primary{background:white;color:black;border-color:white}
+.btn-primary:before{background:#d9d9d9}
+.btn-primary:hover{color:#000}
+.btn-arrow{font-size:18px;transition:transform .3s}
+.btn:hover .btn-arrow{transform:translate(3px,-2px)}
+.hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:150px 7% 70px;overflow:hidden}
+.hero-image{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(90deg,#050505 3%,rgba(5,5,5,.88) 36%,rgba(5,5,5,.4) 72%,#050505 100%),linear-gradient(0deg,#050505 0%,transparent 28%,rgba(0,0,0,.18)),url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=2400&q=85");background-size:cover;background-position:center 43%;filter:grayscale(1);transform:scale(1.08);animation:heroZoom 2.4s var(--ease) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-grid{position:absolute;inset:0;z-index:-1;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
+.hero-orbit{position:absolute;width:min(55vw,720px);aspect-ratio:1;right:-5%;top:13%;border:1px solid rgba(255,255,255,.11);border-radius:50%;animation:orbit 35s linear infinite}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.1);border-radius:50%;inset:12%}
+.hero-orbit:after{inset:26%;border-style:dashed;animation:orbit 45s linear infinite reverse}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.hero-content{max-width:1450px;width:100%;margin:0 auto;position:relative}
+.eyebrow{display:flex;align-items:center;gap:12px;color:#aaa;font-size:10px;letter-spacing:.25em;text-transform:uppercase}
+.eyebrow:before{content:"";width:30px;height:1px;background:#fff}
+.hero .eyebrow{animation:rise .9s .7s both}
+.hero h1{font-family:var(--display);font-size:clamp(100px,20vw,300px);font-weight:900;letter-spacing:-.075em;line-height:.72;margin:38px 0 35px;max-width:1200px}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{font-style:normal;display:block;animation:rise 1s var(--ease) both}
+.hero h1 span:nth-child(2) i{animation-delay:.15s;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.82)}
+@keyframes rise{from{opacity:0;transform:translateY(110%) skewY(5deg);filter:blur(12px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.hero-desc{max-width:450px;color:#b1b1b1;font-size:14px;line-height:1.9;animation:fadeUp .9s 1s both}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:29px;animation:fadeUp .9s 1.1s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-bottom{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-top:clamp(65px,10vh,120px);animation:fadeUp 1s 1.3s both}
+.hero-index{font-size:10px;letter-spacing:.15em;color:#777}
+.hero-index strong{font-size:14px;color:#fff}
+.scroll-cue{display:flex;align-items:center;gap:15px;font-size:9px;letter-spacing:.22em;color:#aaa;text-transform:uppercase}
+.scroll-line{height:48px;width:1px;background:#444;position:relative;overflow:hidden}
+.scroll-line:after{content:"";position:absolute;top:-50%;left:0;width:1px;height:50%;background:#fff;animation:scrollLine 1.8s infinite}
+@keyframes scrollLine{to{top:100%}}
+.hero-coordinate{text-align:right;color:#777;font-size:9px;letter-spacing:.14em;line-height:1.8}
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:#080808}
+.ticker-track{display:flex;width:max-content;animation:ticker 36s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{display:flex;align-items:center;gap:24px;padding:20px 28px;font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:.09em;white-space:nowrap}
+.ticker-item span{color:#777;font-size:14px}
 @keyframes ticker{to{transform:translateX(-50%)}}
-@keyframes rise{0%{transform:translateY(30px);opacity:0}15%{opacity:.7}85%{opacity:.4}100%{transform:translateY(-110vh);opacity:0}}
-@media(max-width:1000px){.nav-links{gap:10px}.nav-links a{font-size:.68rem}.hero-layout{gap:15px}.stats{grid-template-columns:repeat(2,1fr)}.event-grid{grid-template-columns:repeat(2,1fr)}.event:last-child{grid-column:span 2}.staff-grid{grid-template-columns:repeat(2,1fr)}.result-head,.result{padding:16px}.about-layout{gap:30px}}
-@media(max-width:760px){section{padding:75px 0}.container{width:calc(100% - 30px)}.nav-shell{top:8px;padding:0 9px}nav{min-height:58px;padding:8px 11px}.brand{font-size:.78rem}.brand img{width:31px;height:31px}.menu{display:block}.nav-links{display:none;position:absolute;top:calc(100% + 8px);left:9px;right:9px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#080808f5;backdrop-filter:blur(20px);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex;animation:up .25s}.nav-links a{font-size:.85rem;padding:11px 9px;border-bottom:1px solid #ffffff0c}.nav-links a:last-child{border:0}.nav-join{display:none}.hero{min-height:auto;padding:125px 0 60px}.hero-layout{grid-template-columns:1fr;gap:10px}.hero-art{grid-row:1;min-height:280px}.ring{width:min(70vw,310px)}.hero-logo{width:min(52vw,220px);height:min(52vw,220px)}.hero h1{font-size:clamp(3.7rem,15vw,6rem)}.art-label{bottom:0;right:4%}.about-layout{grid-template-columns:1fr}.about-cards{grid-template-columns:1fr 1fr}.feature{padding:19px;min-height:190px}.event-grid{grid-template-columns:1fr}.event:last-child{grid-column:auto}.countdown-panel{grid-template-columns:1fr;gap:18px}.countdown{justify-content:space-between;gap:5px}.time{min-width:0;flex:1;padding:10px 4px}.time b{font-size:1.3rem}.result-head{display:none}.result{grid-template-columns:1fr auto;gap:7px 12px}.result .score{grid-column:2;grid-row:1/span 2;text-align:right}.result-date{grid-column:1/-1}.staff-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.gallery-item:first-child{grid-row:auto;grid-column:span 2}.music-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:25px}.footer-brand{grid-column:1/-1}.floaters{right:10px;bottom:10px}.announcement{right:10px;bottom:10px}.input-row{flex-wrap:wrap}.input-row .btn{width:100%}}
-@media(max-width:420px){.about-cards{grid-template-columns:1fr}.feature{min-height:0}.hero .btn{width:100%}.gallery-grid{grid-auto-rows:130px}.footer-top{grid-template-columns:1fr}.footer-brand{grid-column:auto}.footer-bottom{flex-direction:column}.countdown{gap:4px}.time b{font-size:1.15rem}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+section{position:relative;padding:130px 7%}
+.container{max-width:1450px;margin:0 auto}
+.section-top{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:55px}
+.kicker{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8d8d8d;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.kicker span{color:#fff}
+.section-title{font-family:var(--display);font-weight:800;font-size:clamp(48px,8vw,110px);letter-spacing:-.045em;line-height:.86;text-transform:uppercase}
+.section-title .outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
+.section-note{max-width:320px;color:#888;font-size:12px;line-height:1.9}
+.reveal{opacity:0;transform:translateY(35px);filter:blur(5px);transition:opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0);filter:blur(0)}
+.reveal-left{transform:translateX(-35px);opacity:0;filter:blur(4px)}
+.reveal-left.visible{transform:translateX(0);opacity:1;filter:blur(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+.stats{padding-top:50px;padding-bottom:70px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.stat{padding:36px 28px;position:relative;overflow:hidden;min-height:145px;border-right:1px solid var(--line);transition:background .4s}
+.stat:last-child{border-right:0}
+.stat:before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:white;transition:width .5s var(--ease)}
+.stat:hover{background:rgba(255,255,255,.035)}
+.stat:hover:before{width:100%}
+.stat-num{font-family:var(--display);font-size:clamp(43px,5vw,70px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.stat-num small{font-family:var(--font);font-size:18px;letter-spacing:0}
+.stat-label{margin-top:15px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#858585}
+.stat-index{position:absolute;top:18px;right:20px;font-size:9px;color:#555}
+.story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.story-visual{position:relative;min-height:590px;overflow:hidden;background:#101010;border:1px solid var(--line);isolation:isolate}
+.story-visual img{position:absolute;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.64);transition:transform 1.2s var(--ease),filter .6s}
+.story-visual:hover img{transform:scale(1.06);filter:grayscale(1) brightness(.8)}
+.story-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#050505 0%,transparent 60%),linear-gradient(90deg,rgba(0,0,0,.2),transparent)}
+.visual-label{position:absolute;z-index:2;left:28px;top:28px;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+.visual-number{position:absolute;z-index:2;bottom:25px;left:28px;font-family:var(--display);font-size:clamp(65px,10vw,130px);font-weight:900;line-height:.8;letter-spacing:-.06em}
+.visual-number small{display:block;font-family:var(--font);font-size:10px;letter-spacing:.22em;font-weight:500;margin-top:20px}
+.story-content h3{font-family:var(--display);font-size:clamp(40px,5vw,70px);line-height:.94;text-transform:uppercase;letter-spacing:-.025em;margin:25px 0}
+.story-content>p{font-size:13px;color:#999;line-height:2;max-width:520px}
+.story-points{margin-top:34px;border-top:1px solid var(--line)}
+.story-point{display:grid;grid-template-columns:42px 1fr;gap:15px;padding:19px 0;border-bottom:1px solid var(--line)}
+.story-point>span{font-size:10px;color:#666;padding-top:3px}
+.story-point strong{display:block;font-size:12px;margin-bottom:6px}
+.story-point p{font-size:11px;color:#858585;line-height:1.8}
+.story-quote{font-family:var(--display);font-size:clamp(24px,3vw,39px);font-weight:600;line-height:1.1;margin-top:32px;max-width:450px}
+.story-quote span{color:#777}
+.events{background:linear-gradient(180deg,#080808,#050505)}
+.event-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:55px;align-items:start}
+.countdown-panel{border:1px solid var(--line);padding:30px;position:sticky;top:100px;background:linear-gradient(140deg,rgba(255,255,255,.06),transparent 60%),#080808;overflow:hidden}
+.countdown-panel:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-100px;top:-100px;box-shadow:0 0 0 30px rgba(255,255,255,.015),0 0 0 60px rgba(255,255,255,.01)}
+.countdown-label{font-size:9px;color:#999;letter-spacing:.2em;text-transform:uppercase}
+.countdown-title{font-family:var(--display);font-size:clamp(35px,4vw,55px);line-height:.9;margin:25px 0 15px;text-transform:uppercase}
+.countdown-copy{font-size:11px;line-height:1.8;color:#858585}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:28px 0}
+.time-box{background:#111;border:1px solid #242424;text-align:center;padding:15px 4px}
+.time-box strong{font-family:var(--display);font-size:clamp(25px,3vw,38px);font-weight:700;display:block}
+.time-box span{font-size:8px;color:#888;letter-spacing:.12em;text-transform:uppercase}
+.countdown-foot{font-size:9px;color:#777;display:flex;align-items:center;gap:8px}
+.countdown-foot:before{content:"";width:5px;height:5px;border-radius:50%;background:white}
+.event-list{display:flex;flex-direction:column;gap:14px}
+.event-card{position:relative;border:1px solid var(--line);background:linear-gradient(115deg,rgba(255,255,255,.035),transparent 60%);padding:26px;display:grid;grid-template-columns:70px 1fr auto;gap:22px;align-items:center;overflow:hidden;transition:transform .4s var(--ease),border-color .4s,background .4s;transform-style:preserve-3d}
+.event-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:white;transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease)}
+.event-card:hover{transform:translateY(-4px);border-color:#555;background:rgba(255,255,255,.045)}
+.event-card:hover:before{transform:scaleY(1)}
+.event-date{width:66px;height:76px;border:1px solid #333;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.event-date strong{font-family:var(--display);font-size:34px;line-height:1}
+.event-date span{font-size:8px;color:#999;letter-spacing:.15em}
+.event-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.pill{font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;border:1px solid #383838;color:#aaa}
+.pill.live{background:#fff;color:#000;border-color:#fff}
+.event-info h3{font-size:16px;margin-bottom:8px;letter-spacing:-.02em}
+.event-info p{font-size:10px;color:#888;line-height:1.7}
+.event-prize{text-align:right;min-width:100px}
+.event-prize small{font-size:8px;color:#888;letter-spacing:.13em;text-transform:uppercase}
+.event-prize strong{display:block;font-family:var(--display);font-size:30px;margin:4px 0 12px}
+.event-prize a{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #777;padding-bottom:4px}
+.event-prize a:hover{border-color:white}
+.event-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:25px;padding-top:20px;border-top:1px solid var(--line);font-size:10px;color:#777}
+.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.match-card{border:1px solid var(--line);background:linear-gradient(140deg,rgba(255,255,255,.035),transparent 70%);padding:26px;position:relative;overflow:hidden;transition:transform .4s var(--ease),border-color .4s}
+.match-card:hover{transform:translateY(-5px);border-color:#666}
+.match-top{display:flex;justify-content:space-between;gap:10px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.match-game{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#999}
+.match-status{font-size:8px;padding:6px 8px;border:1px solid #333;color:#aaa}
+.versus{display:grid;grid-template-columns:1fr 50px 1fr;align-items:center;gap:12px;padding:27px 0}
+.team{text-align:center}
+.team-logo{width:54px;height:54px;border:1px solid #353535;margin:0 auto 12px;display:grid;place-items:center;font-family:var(--display);font-size:27px;font-weight:800;background:#111}
+.team.winner .team-logo{background:#fff;color:#000;border-color:white}
+.team strong{font-size:11px;display:block}
+.team small{font-size:8px;color:#777;display:block;margin-top:6px}
+.score{text-align:center;font-family:var(--display);font-size:31px;font-weight:800;white-space:nowrap}
+.score small{display:block;font-family:var(--font);font-size:8px;color:#666;letter-spacing:.12em}
+.match-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:17px;border-top:1px solid var(--line);font-size:9px;color:#777}
+.winner-label{color:#fff;display:flex;align-items:center;gap:6px}
+.winner-label:before{content:"";width:5px;height:5px;background:white;border-radius:50%}
+.results-note{font-size:10px;color:#777;margin-top:18px;line-height:1.8}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.profile-card{position:relative;min-height:430px;border:1px solid var(--line);background:#0a0a0a;overflow:hidden;transform-style:preserve-3d;transition:border-color .4s,transform .4s var(--ease)}
+.profile-card:hover{border-color:#777}
+.profile-art{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(255,255,255,.17),transparent 46%),linear-gradient(140deg,#1c1c1c,#050505 65%);overflow:hidden}
+.profile-art:before{content:"";position:absolute;width:230px;height:310px;border:1px solid rgba(255,255,255,.16);left:50%;top:46%;transform:translate(-50%,-50%) rotate(30deg);transition:transform .8s var(--ease)}
+.profile-art:after{content:"";position:absolute;width:210px;height:210px;border:1px solid rgba(255,255,255,.13);border-radius:50%;left:50%;top:42%;transform:translate(-50%,-50%);box-shadow:0 0 0 25px rgba(255,255,255,.018),0 0 0 50px rgba(255,255,255,.012);transition:transform .8s var(--ease)}
+.profile-card:hover .profile-art:before{transform:translate(-50%,-50%) rotate(50deg) scale(1.1)}
+.profile-card:hover .profile-art:after{transform:translate(-50%,-50%) scale(1.1)}
+.profile-initial{position:absolute;z-index:1;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-size:clamp(110px,15vw,190px);font-weight:900;letter-spacing:-.08em;color:rgba(255,255,255,.8);text-shadow:0 10px 50px #000}
+.profile-top{position:absolute;top:22px;left:22px;right:22px;z-index:2;display:flex;justify-content:space-between;align-items:center}
+.profile-top span{font-size:8px;letter-spacing:.16em;text-transform:uppercase;border:1px solid #444;padding:7px 9px;background:rgba(0,0,0,.35)}
+.profile-bottom{position:absolute;bottom:0;left:0;right:0;padding:30px 25px 25px;z-index:2;background:linear-gradient(transparent,rgba(0,0,0,.95) 20%)}
+.profile-role{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#aaa;margin-bottom:9px}
+.profile-name{font-family:var(--display);font-size:45px;line-height:1;font-weight:800;letter-spacing:-.02em}
+.profile-desc{font-size:10px;color:#888;margin-top:10px;line-height:1.7}
+.profile-bottom-line{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:15px;border-top:1px solid rgba(255,255,255,.15);font-size:9px;color:#aaa}
+.profile-bottom-line span:last-child{font-size:16px;color:#fff}
+.staff-divider{display:flex;align-items:center;gap:15px;margin:45px 0 22px;color:#777;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.staff-divider:after{content:"";height:1px;flex:1;background:var(--line)}
+.management-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.management-card{border:1px solid var(--line);padding:25px;display:flex;align-items:center;gap:18px;background:linear-gradient(120deg,rgba(255,255,255,.035),transparent);transition:background .3s,border-color .3s,transform .3s}
+.management-card:hover{background:#111;border-color:#666;transform:translateY(-3px)}
+.management-avatar{width:55px;height:55px;display:grid;place-items:center;background:#fff;color:#000;font-family:var(--display);font-size:31px;font-weight:900}
+.management-info small{font-size:8px;letter-spacing:.16em;color:#777;text-transform:uppercase}
+.management-info strong{display:block;font-size:15px;margin-top:6px}
+.management-info span{display:block;font-size:9px;color:#888;margin-top:5px}
+.music-section{background:#080808}
+.music-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.music-panel{border:1px solid var(--line);padding:30px;background:linear-gradient(145deg,rgba(255,255,255,.045),transparent 70%);min-width:0}
+.music-heading{display:flex;justify-content:space-between;align-items:start;gap:15px;margin-bottom:24px}
+.music-heading small{font-size:9px;color:#888;letter-spacing:.18em;text-transform:uppercase}
+.music-heading h3{font-family:var(--display);font-size:38px;text-transform:uppercase;margin-top:7px}
+.music-icon{width:43px;height:43px;border:1px solid #444;display:grid;place-items:center;font-size:18px}
+.music-form{display:flex;gap:8px}
+.music-form input{min-width:0;flex:1;background:#050505;border:1px solid #303030;color:white;padding:14px;font-size:11px;outline:none;transition:border-color .3s}
+.music-form input:focus{border-color:#aaa}
+.music-form input::placeholder{color:#666}
+.music-form button{background:#fff;color:#000;border:0;padding:0 18px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .3s}
+.music-form button:hover{background:#ccc}
+.player-area{margin-top:18px;min-height:100px;border:1px solid #252525;background:#050505;display:flex;align-items:center;justify-content:center;color:#777;font-size:10px;text-align:center;padding:10px}
+.player-area iframe{width:100%;border:0;display:block}
+.player-hint{max-width:280px;line-height:1.8}
+.music-foot{margin-top:18px;font-size:9px;color:#777;line-height:1.8}
+.music-foot a{text-decoration:underline;color:#bbb}
+.community-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.community-feature{min-height:420px;position:relative;overflow:hidden;border:1px solid var(--line);padding:35px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(140deg,#1b1b1b,#070707 70%)}
+.community-feature:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.14);border-radius:50%;right:-120px;top:-90px;box-shadow:0 0 0 35px rgba(255,255,255,.018),0 0 0 70px rgba(255,255,255,.012),0 0 0 105px rgba(255,255,255,.008);transition:transform 1s var(--ease)}
+.community-feature:hover:before{transform:scale(1.08) rotate(15deg)}
+.community-feature>*{position:relative;z-index:1}
+.community-feature h3{font-family:var(--display);font-size:clamp(45px,6vw,80px);line-height:.88;text-transform:uppercase;letter-spacing:-.03em;max-width:550px}
+.community-feature p{font-size:12px;line-height:1.9;color:#aaa;max-width:360px;margin-top:20px}
+.community-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.community-mini{border:1px solid var(--line);padding:25px;background:#0b0b0b;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;transition:background .3s,border-color .3s,transform .3s}
+.community-mini:hover{background:#121212;border-color:#555;transform:translateY(-4px)}
+.mini-symbol{font-family:var(--display);font-size:36px;color:#aaa}
+.community-mini strong{display:block;font-size:13px;margin-bottom:8px}
+.community-mini p{font-size:10px;color:#888;line-height:1.8}
+.community-mini .mini-number{font-family:var(--display);font-size:35px;margin-top:12px}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:100px;gap:12px}
+.gallery-item{position:relative;overflow:hidden;border:1px solid var(--line);background:#101010;cursor:none;isolation:isolate}
+.gallery-item:nth-child(1){grid-column:span 7;grid-row:span 4}
+.gallery-item:nth-child(2){grid-column:span 5;grid-row:span 3}
+.gallery-item:nth-child(3){grid-column:span 5;grid-row:span 3}
+.gallery-item:nth-child(4){grid-column:span 4;grid-row:span 3}
+.gallery-item:nth-child(5){grid-column:span 4;grid-row:span 3}
+.gallery-item:nth-child(6){grid-column:span 4;grid-row:span 3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.68);transition:transform .8s var(--ease),filter .6s}
+.gallery-item:hover img{transform:scale(1.08);filter:grayscale(1) brightness(.95)}
+.gallery-item:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent 50%);pointer-events:none}
+.gallery-caption{position:absolute;bottom:18px;left:18px;right:18px;z-index:2;display:flex;align-items:end;justify-content:space-between;gap:10px}
+.gallery-caption strong{font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.gallery-caption span{font-size:18px;transition:transform .3s}
+.gallery-item:hover .gallery-caption span{transform:translate(3px,-3px)}
+.lightbox{position:fixed;inset:0;z-index:10002;background:rgba(0,0,0,.94);backdrop-filter:blur(15px);display:flex;align-items:center;justify-content:center;padding:5%;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:100%;max-height:85vh;object-fit:contain;filter:grayscale(1);transform:scale(.96);transition:transform .4s}
+.lightbox.open img{transform:scale(1)}
+.lightbox-close{position:absolute;top:30px;right:35px;border:1px solid #444;background:#111;width:44px;height:44px;font-size:24px}
+.faq-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:75px;align-items:start}
+.faq-intro p{font-size:12px;color:#888;line-height:1.9;margin-top:25px;max-width:300px}
+.faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-question{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 0;text-align:left;background:transparent;border:0;font-size:13px;font-weight:600}
+.faq-question span:last-child{font-size:22px;font-weight:400;color:#999;transition:transform .3s}
+.faq-item.open .faq-question span:last-child{transform:rotate(45deg);color:#fff}
+.faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease)}
+.faq-answer>div{overflow:hidden}
+.faq-answer p{font-size:11px;line-height:1.9;color:#999;padding:0 35px 0 0}
+.faq-item.open .faq-answer{grid-template-rows:1fr}
+.faq-item.open .faq-answer p{padding-bottom:24px}
+.cta{padding:150px 7%;overflow:hidden}
+.cta-inner{max-width:1450px;margin:auto;position:relative;border:1px solid #333;padding:clamp(35px,7vw,100px);background:radial-gradient(ellipse at 50% 120%,rgba(255,255,255,.13),transparent 58%),linear-gradient(130deg,#111,#050505 70%);text-align:center;overflow:hidden}
+.cta-inner:before,.cta-inner:after{content:"";position:absolute;width:600px;height:600px;border:1px solid rgba(255,255,255,.09);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-inner:after{width:430px;height:430px;border-style:dashed;animation:orbit 60s linear infinite}
+.cta-content{position:relative;z-index:2}
+.cta-kicker{font-size:10px;color:#aaa;letter-spacing:.25em;text-transform:uppercase}
+.cta h2{font-family:var(--display);font-size:clamp(65px,13vw,180px);font-weight:900;letter-spacing:-.065em;line-height:.78;margin:35px 0}
+.cta h2 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.7)}
+.cta p{font-size:12px;color:#aaa;line-height:1.9;max-width:440px;margin:0 auto}
+.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.cta-foot{display:flex;justify-content:space-between;gap:20px;margin-top:65px;padding-top:20px;border-top:1px solid #292929;color:#777;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+footer{padding:50px 7% 25px;border-top:1px solid var(--line);background:#030303}
+.footer-main{max-width:1450px;margin:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:35px;padding-bottom:55px}
+.footer-brand p{max-width:250px;color:#777;font-size:11px;line-height:1.9;margin-top:20px}
+.footer-col h4{font-size:9px;color:#777;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px}
+.footer-col a{display:block;color:#bbb;font-size:11px;margin:13px 0;transition:color .2s,transform .2s;width:max-content}
+.footer-col a:hover{color:white;transform:translateX(4px)}
+.footer-bottom{max-width:1450px;margin:auto;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;color:#666;font-size:9px;letter-spacing:.07em}
+.footer-bottom a{color:#aaa}
+.footer-bottom a:hover{color:white}
+.announcement{position:fixed;right:25px;bottom:25px;z-index:9000;width:min(360px,calc(100vw - 30px));padding:20px;background:rgba(10,10,10,.94);border:1px solid #444;backdrop-filter:blur(20px);box-shadow:0 20px 70px rgba(0,0,0,.5);transform:translateY(140%);transition:transform .6s var(--ease)}
+.announcement.show{transform:translateY(0)}
+.announcement-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.announcement-head span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#aaa}
+.announcement-close{background:none;border:0;color:#888;font-size:20px}
+.announcement strong{font-size:14px}
+.announcement p{font-size:10px;line-height:1.8;color:#999;margin-top:8px}
+.announcement-link{display:inline-block;margin-top:13px;font-size:9px;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #777;padding-bottom:4px}
+.back-top{position:fixed;bottom:26px;left:25px;z-index:500;width:42px;height:42px;background:#111;border:1px solid #444;display:grid;place-items:center;font-size:17px;opacity:0;visibility:hidden;transform:translateY(10px);transition:.3s}
+.back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.mobile-overlay{display:none}
+@media(min-width:1600px){.hero{padding-left:max(7%,calc((100vw - 1450px)/2));padding-right:max(7%,calc((100vw - 1450px)/2))}}
+@media(max-width:1000px){
+  .nav-links{gap:17px}.nav-links a{font-size:10px}.live-status{display:none}
+  section{padding:100px 5%}.hero{padding-left:5%;padding-right:5%}
+  .story-grid{gap:35px}.story-visual{min-height:500px}
+  .event-layout{grid-template-columns:.8fr 1.2fr;gap:25px}
+  .event-card{grid-template-columns:58px 1fr;gap:15px;padding:20px}
+  .event-date{width:56px;height:65px}.event-prize{grid-column:2;display:flex;align-items:center;justify-content:space-between;text-align:left;border-top:1px solid var(--line);padding-top:12px;min-width:0}
+  .event-prize strong{margin:0;font-size:25px}.event-prize small{display:none}
+  .team-grid{gap:10px}.profile-card{min-height:370px}.profile-name{font-size:35px}
+  .faq-layout{gap:35px}
+}
+@media(max-width:760px){
+  body{cursor:auto}.cursor,.cursor-ring,.mouse-glow{display:none}
+  a,button,.interactive,.gallery-item{cursor:pointer}
+  header{padding:15px 5%}.nav{gap:10px}
+  .brand{font-size:11px}.brand-icon{width:32px;height:32px}
+  .nav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;background:rgba(5,5,5,.97);backdrop-filter:blur(20px);padding:25px 6%;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+  .nav-links.open{display:flex;animation:fadeUp .25s both}
+  .nav-links a{padding:15px 0;border-bottom:1px solid #222;font-size:12px}
+  .nav-links a:last-child{border:0}
+  .nav-right>.btn{padding:11px 12px;font-size:9px}
+  .menu-toggle{display:block}
+  .hero{padding:140px 6% 45px;min-height:94svh}
+  .hero-image{background-position:58% center}
+  .hero-orbit{width:95vw;right:-50%;top:18%}
+  .hero h1{font-size:clamp(90px,21vw,160px);margin:35px 0 28px}
+  .hero-desc{font-size:12px;max-width:350px}
+  .hero-bottom{margin-top:70px}.hero-coordinate{display:none}
+  .ticker-item{font-size:18px;padding:17px 20px}
+  section{padding:80px 6%}
+  .section-top{display:block;margin-bottom:35px}
+  .section-note{margin-top:22px}
+  .stats{padding-top:25px;padding-bottom:45px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat{padding:25px 20px;min-height:125px;border-bottom:1px solid var(--line)}
+  .stat:nth-child(2){border-right:0}.stat:nth-child(3),.stat:nth-child(4){border-bottom:0}
+  .story-grid,.event-layout,.community-grid,.faq-layout{grid-template-columns:1fr;gap:35px}
+  .story-visual{min-height:430px}
+  .story-content h3{font-size:52px}
+  .countdown-panel{position:relative;top:auto}
+  .event-card{grid-template-columns:55px 1fr;padding:17px;gap:13px}
+  .event-info h3{font-size:14px}
+  .event-prize strong{font-size:24px}
+  .results-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .profile-card{min-height:370px}
+  .profile-card:last-child:nth-child(odd){grid-column:1/-1;min-height:340px}
+  .profile-name{font-size:36px}
+  .profile-initial{font-size:140px}
+  .management-grid{grid-template-columns:1fr}
+  .management-card{padding:18px}
+  .music-grid{grid-template-columns:1fr}
+  .music-panel{padding:22px}
+  .community-feature{min-height:370px;padding:25px}
+  .community-mini{min-height:180px;padding:19px}
+  .gallery-grid{grid-auto-rows:85px;gap:8px}
+  .gallery-item:nth-child(1){grid-column:span 12;grid-row:span 3}
+  .gallery-item:nth-child(2),.gallery-item:nth-child(3){grid-column:span 6;grid-row:span 2}
+  .gallery-item:nth-child(4),.gallery-item:nth-child(5),.gallery-item:nth-child(6){grid-column:span 4;grid-row:span 2}
+  .gallery-caption{left:10px;right:10px;bottom:10px}.gallery-caption strong{font-size:9px}
+  .faq-layout{gap:20px}
+  .cta{padding:75px 5%}
+  .cta-inner{padding:55px 20px}
+  .cta h2{font-size:clamp(65px,15vw,110px)}
+  .cta-foot{margin-top:45px;font-size:8px}
+  footer{padding:40px 6% 22px}
+  .footer-main{grid-template-columns:1fr 1fr;gap:35px 20px}
+  .footer-brand{grid-column:1/-1}
+  .footer-bottom{flex-wrap:wrap;line-height:1.8}
+  .announcement{right:15px;bottom:15px}
+  .back-top{left:15px;bottom:15px}
+}
+@media(max-width:420px){
+  .nav-right>.btn{display:none}
+  .hero h1{font-size:21vw}
+  .hero-actions .btn{padding:13px 14px}
+  .section-title{font-size:48px}
+  .team-grid{grid-template-columns:1fr}
+  .profile-card,.profile-card:last-child:nth-child(odd){min-height:390px;grid-column:auto}
+  .community-mini-grid{gap:8px}
+  .community-mini{padding:14px;min-height:170px}
+  .music-form button{padding:0 12px;font-size:9px}
+  .event-meta{gap:5px}
+  .event-info p{font-size:9px}
+  .versus{grid-template-columns:1fr 40px 1fr;gap:5px}
+  .team-logo{width:46px;height:46px}
+  .footer-main{gap:30px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
-<body>
-<div id="particles" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span></div>
+<body class="loading">
+<div id="progress"></div>
+<div class="noise"></div>
+<div class="ambient"></div>
+<canvas id="world"></canvas>
+<div class="mouse-glow" id="mouseGlow"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <div id="loader" aria-label="Loading EXILERS HQ">
-  <div class="loader-box">
-    <img src="logo.png" alt="EXILERS HQ logo">
-    <div class="loader-brand">EXILERS HQ</div>
-    <div class="loader-track"><i></i></div>
-    <div class="loader-small">Preparing your experience</div>
+  <div class="loader-mark" aria-label="EXILERS">
+    <span>E</span><span>X</span><span>I</span><span>L</span><span>E</span><span>R</span><span>S</span>
   </div>
+  <div class="loader-bottom"><span>EXILERS HQ / SYSTEM INITIALIZING</span><span id="loadPercent">00%</span></div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
 </div>
 
-<header class="nav-shell">
-<nav aria-label="Main navigation">
-  <a class="brand" href="#home"><img src="logo.png" alt=""><span>EXILERS <em>HQ</em></span></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#home">Home</a><a href="#about">About</a><a href="#tournaments">Tournaments</a>
-    <a href="#results">Match Results</a><a href="#staff">Staff Team</a><a href="#music">Music</a>
-    <a href="#faq">FAQ</a><a href="#contact">Contact</a>
-  </div>
-  <a class="btn white nav-join" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Join Community ↗</a>
-  <button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
-</nav>
+<header id="header">
+  <nav class="nav">
+    <a class="brand" href="#home" aria-label="EXILERS HQ home">
+      <span class="brand-icon">X</span>
+      <span>EXILERS HQ<small>BEYOND ORDINARY</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">ABOUT</a>
+      <a href="#events">EVENTS</a>
+      <a href="#results">RESULTS</a>
+      <a href="#team">THE TEAM</a>
+      <a href="#music">MUSIC</a>
+      <a href="#gallery">GALLERY</a>
+    </div>
+    <div class="nav-right">
+      <div class="live-status"><span class="live-dot"></span> COMMUNITY ONLINE</div>
+      <a class="btn btn-primary" href="#join">ENTER HQ <span class="btn-arrow">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
 </header>
 
 <main>
-<section class="hero" id="home">
-<div class="container hero-layout">
-  <div>
-    <div class="pill"><span class="dot"></span> Built for the next level</div>
-    <h1>EXILERS<span>HQ.</span></h1>
-    <h3>One of the biggest gaming communities.</h3>
-    <p class="hero-copy">A premium gaming and event-hosting community where players compete, connect, host tournaments, and grow together. Find your squad. Make your mark. Play beyond limits.</p>
-    <div class="actions"><a class="btn white" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Join Community ↗</a><a class="btn" href="#tournaments">Explore Events ↓</a></div>
-    <div class="hero-note">Community. Competition. Connection.</div>
+  <section class="hero" id="home">
+    <div class="hero-image" id="heroImage"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orbit"></div>
+    <div class="hero-content">
+      <div class="eyebrow">INDEPENDENT GAMING CULTURE / EST. FOR THE BOLD</div>
+      <h1><span><i>EXILERS</i></span><span><i>HQ.</i></span></h1>
+      <p class="hero-desc">More than a community. A competitive universe built for players who show up, push limits, and make every moment count.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#join">JOIN THE MOVEMENT <span class="btn-arrow">↗</span></a>
+        <a class="btn" href="#events">EXPLORE EVENTS <span class="btn-arrow">↓</span></a>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-index"><strong>01</strong> / THE NEXT LEVEL STARTS HERE</div>
+        <a class="scroll-cue" href="#about"><span class="scroll-line"></span> SCROLL TO EXPLORE</a>
+        <div class="hero-coordinate">BUILT DIFFERENT.<br>PLAY WITHOUT LIMITS.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="EXILERS HQ community values">
+    <div class="ticker-track">
+      <div class="ticker-item">COMPETE WITHOUT LIMITS <span>✳</span></div>
+      <div class="ticker-item">BUILT BY THE COMMUNITY <span>✳</span></div>
+      <div class="ticker-item">EVERY MATCH MATTERS <span>✳</span></div>
+      <div class="ticker-item">YOUR NEXT CHAPTER STARTS HERE <span>✳</span></div>
+      <div class="ticker-item">COMPETE WITHOUT LIMITS <span>✳</span></div>
+      <div class="ticker-item">BUILT BY THE COMMUNITY <span>✳</span></div>
+      <div class="ticker-item">EVERY MATCH MATTERS <span>✳</span></div>
+      <div class="ticker-item">YOUR NEXT CHAPTER STARTS HERE <span>✳</span></div>
+    </div>
   </div>
-  <div class="hero-art"><div class="ring"></div><img class="hero-logo" src="logo.png" alt="EXILERS HQ logo"><div class="art-label">Made for players<strong>Enter the arena.</strong></div></div>
-</div>
-</section>
 
-<div class="ticker" aria-hidden="true"><div class="ticker-track">
-<span><b>EXILERS HQ</b>　✦　PLAY TOGETHER　✦　COMPETE WITH PURPOSE　✦　COMMUNITY FIRST　✦　BUILT TO CONNECT　✦　</span>
-<span><b>EXILERS HQ</b>　✦　PLAY TOGETHER　✦　COMPETE WITH PURPOSE　✦　COMMUNITY FIRST　✦　BUILT TO CONNECT　✦　</span>
-</div></div>
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat reveal"><span class="stat-index">01</span><div class="stat-num"><span data-count="5000" data-suffix="+">0</span></div><div class="stat-label">Community members</div></div>
+        <div class="stat reveal delay-1"><span class="stat-index">02</span><div class="stat-num"><span data-count="100" data-suffix="+">0</span></div><div class="stat-label">Events hosted</div></div>
+        <div class="stat reveal delay-2"><span class="stat-index">03</span><div class="stat-num"><span data-count="50" data-suffix="+">0</span></div><div class="stat-label">Tournaments</div></div>
+        <div class="stat reveal delay-3"><span class="stat-index">04</span><div class="stat-num"><span data-count="24" data-suffix="/7">0</span></div><div class="stat-label">Community energy</div></div>
+      </div>
+      <p class="results-note">Community figures shown are editable display targets. Replace them with verified EXILERS HQ statistics before publishing.</p>
+    </div>
+  </section>
 
-<section id="community"><div class="container">
-<div class="section-head reveal"><div class="kicker">The community</div><h2>Built by players.<br><span>Powered by community.</span></h2><p class="intro">More than a server. EXILERS HQ brings players together through competition, events, teamwork, and the moments between matches.</p></div>
-<div class="grid stats">
-  <article class="stat glass reveal"><strong><span class="counter" data-target="5000">0</span>+</strong><label>Community members</label></article>
-  <article class="stat glass reveal"><strong><span class="counter" data-target="100">0</span>+</strong><label>Events hosted</label></article>
-  <article class="stat glass reveal"><strong><span class="counter" data-target="50">0</span>+</strong><label>Tournaments</label></article>
-  <article class="stat glass reveal"><strong>24<span class="muted">/7</span></strong><label>Community activity</label></article>
-</div>
-</div></section>
+  <section id="about">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>01</span> / THE EXILERS PHILOSOPHY</div><h2 class="section-title">NOT JUST<br><span class="outline">ANOTHER</span><br>SERVER.</h2></div>
+        <p class="section-note">A home for ambitious players, competitive minds, and people who believe gaming is better when the whole community levels up.</p>
+      </div>
+      <div class="story-grid">
+        <div class="story-visual reveal-left">
+          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1300&q=85" alt="Competitive gaming arena and players" loading="lazy">
+          <div class="visual-label">EXILERS HQ / OUR WORLD</div>
+          <div class="visual-number">PLAY<br>WITH<br>PURPOSE.<small>COMMUNITY. COMPETITION. CULTURE.</small></div>
+        </div>
+        <div class="story-content reveal">
+          <div class="kicker">A DIFFERENT STANDARD</div>
+          <h3>THE GAME<br>IS ONLY THE<br>BEGINNING.</h3>
+          <p>EXILERS HQ brings players together through competitive events, shared experiences, and a culture that values skill, respect, and real connections. Whether you're here to compete, meet your squad, or make your mark, there's room to build something bigger.</p>
+          <div class="story-points">
+            <div class="story-point"><span>01 /</span><div><strong>COMPETITION WITH PURPOSE</strong><p>Structured events, rivalries worth remembering, and room to test your skills.</p></div></div>
+            <div class="story-point"><span>02 /</span><div><strong>A COMMUNITY THAT CONNECTS</strong><p>Find teammates, make friends, and be part of something beyond the match.</p></div></div>
+            <div class="story-point"><span>03 /</span><div><strong>BUILT TO KEEP EVOLVING</strong><p>New experiences, fresh challenges, and a community that grows with its players.</p></div></div>
+          </div>
+          <div class="story-quote">“The best players win matches. <span>The right community creates legacies.</span>”</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="about"><div class="container about-layout">
-<div class="reveal"><div class="kicker">Why Exilers</div><h2>Your people.<br><span>Your arena.</span></h2><p>Whether you're here to win, host, improve, or simply find your people, there's a place for you here.</p><a class="btn" href="#contact">Discover the community ↗</a></div>
-<div class="grid about-cards">
-  <article class="feature glass reveal"><div class="icon">✧</div><h3>Community First</h3><p>Meet new teammates, share your highlights, and build real connections around the games you love.</p></article>
-  <article class="feature glass reveal"><div class="icon">⌘</div><h3>Competitive Events</h3><p>Bring your focus, form your squad, and test your skills in organized community competitions.</p></article>
-  <article class="feature glass reveal"><div class="icon">◇</div><h3>Tournaments</h3><p>Experience structured brackets, team rivalries, and the thrill of fighting for the top spot.</p></article>
-  <article class="feature glass reveal"><div class="icon">◎</div><h3>Squad Mentality</h3><p>Team-based challenges reward communication, coordination, and showing up for each other.</p></article>
-</div>
-</div></section>
+  <section class="events" id="events">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>02</span> / THE COMPETITIVE CIRCUIT</div><h2 class="section-title">MAKE YOUR<br><span class="outline">NEXT MOVE.</span></h2></div>
+        <p class="section-note">Find your next challenge. From competitive brackets to community nights, the next story starts when you show up.</p>
+      </div>
+      <div class="event-layout">
+        <aside class="countdown-panel reveal-left">
+          <div class="countdown-label">THE NEXT CHAPTER / COUNTDOWN</div>
+          <h3 class="countdown-title">YOUR NEXT<br>BIG MOMENT.</h3>
+          <p class="countdown-copy">The clock is moving. Set the date of your next official event in the site configuration to activate the live countdown.</p>
+          <div class="countdown" id="countdown">
+            <div class="time-box"><strong id="days">--</strong><span>Days</span></div>
+            <div class="time-box"><strong id="hours">--</strong><span>Hours</span></div>
+            <div class="time-box"><strong id="minutes">--</strong><span>Minutes</span></div>
+            <div class="time-box"><strong id="seconds">--</strong><span>Seconds</span></div>
+          </div>
+          <div class="countdown-foot" id="countdownStatus">AWAITING OFFICIAL EVENT DATE</div>
+        </aside>
+        <div class="event-list">
+          <article class="event-card reveal" data-tilt>
+            <div class="event-date"><strong>01</strong><span>EVENT SLOT</span></div>
+            <div class="event-info">
+              <div class="event-meta"><span class="pill">COMPETITIVE</span><span class="pill">REGISTRATION</span></div>
+              <h3>EXILERS OPEN SERIES</h3>
+              <p>Bring your best squad. Enter the bracket, test your coordination, and compete for the top spot.</p>
+            </div>
+            <div class="event-prize"><small>Prize pool</small><strong>TBA</strong><a href="#join">GET UPDATES ↗</a></div>
+          </article>
+          <article class="event-card reveal delay-1" data-tilt>
+            <div class="event-date"><strong>02</strong><span>EVENT SLOT</span></div>
+            <div class="event-info">
+              <div class="event-meta"><span class="pill">COMMUNITY</span><span class="pill">OPEN</span></div>
+              <h3>COMMUNITY SHOWDOWN</h3>
+              <p>Good games, unexpected rivalries, and a chance to play alongside the wider EXILERS community.</p>
+            </div>
+            <div class="event-prize"><small>Prize pool</small><strong>TBA</strong><a href="#join">GET UPDATES ↗</a></div>
+          </article>
+          <article class="event-card reveal delay-2" data-tilt>
+            <div class="event-date"><strong>03</strong><span>EVENT SLOT</span></div>
+            <div class="event-info">
+              <div class="event-meta"><span class="pill">SPECIAL EVENT</span><span class="pill">UPCOMING</span></div>
+              <h3>AFTER HOURS</h3>
+              <p>Switch up the pace with casual sessions, community challenges, and moments beyond the leaderboard.</p>
+            </div>
+            <div class="event-prize"><small>Entry</small><strong>FREE*</strong><a href="#join">GET UPDATES ↗</a></div>
+          </article>
+          <div class="event-footer"><span>*Entry conditions and prizes depend on the official event announcement.</span><a class="btn" href="#join">FOLLOW ANNOUNCEMENTS ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="tournaments"><div class="container">
-<div class="section-head reveal"><div class="kicker">Step into the arena</div><h2>Events & tournaments.</h2><p class="intro">Find your next challenge. Check the community announcements for confirmed dates and entry instructions.</p></div>
-<div class="grid event-grid">
-<article class="event glass reveal"><div class="event-art" data-num="01"><span class="event-tag">Featured event</span></div><div class="event-body"><h3>Exilers Championship</h3><p>The main stage. Gather your lineup and compete for community bragging rights.</p><div class="meta"><div><small>Prize pool</small><b>To be announced</b></div><div><small>Date</small><b>Announcement soon</b></div></div><div class="event-bottom"><span class="status">Registration info</span><a class="btn" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Join ↗</a></div></div></article>
-<article class="event glass reveal"><div class="event-art" data-num="02"><span class="event-tag">Team competition</span></div><div class="event-body"><h3>Squad Showdown</h3><p>Teamwork under pressure. Build a lineup and take on the community.</p><div class="meta"><div><small>Prize pool</small><b>To be announced</b></div><div><small>Date</small><b>Coming soon</b></div></div><div class="event-bottom"><span class="status">Details upcoming</span><a class="btn" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Updates ↗</a></div></div></article>
-<article class="event glass reveal"><div class="event-art" data-num="03"><span class="event-tag">Community event</span></div><div class="event-body"><h3>Community Clash</h3><p>A casual event for meeting players, playing together, and making memories.</p><div class="meta"><div><small>Format</small><b>Community games</b></div><div><small>Date</small><b>Coming soon</b></div></div><div class="event-bottom"><span class="status">Community event</span><a class="btn" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Join in ↗</a></div></div></article>
-</div>
-<div class="countdown-panel glass reveal"><div><div class="kicker">Next major event</div><h3>Countdown to the next arena call</h3><p id="countdownMessage">The event date has not been configured yet. Check announcements for the official schedule.</p></div><div class="countdown"><div class="time"><b id="days">--</b><small>Days</small></div><div class="time"><b id="hours">--</b><small>Hours</small></div><div class="time"><b id="minutes">--</b><small>Minutes</small></div><div class="time"><b id="seconds">--</b><small>Seconds</small></div></div></div>
-</div></section>
+  <section id="results">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>03</span> / THE SCOREBOARD</div><h2 class="section-title">PROVE IT.<br><span class="outline">OWN IT.</span></h2></div>
+        <p class="section-note">Every result tells a story. A space for the rivalries, clutch moments, and performances that define our competitive scene.</p>
+      </div>
+      <div class="results-grid">
+        <article class="match-card reveal" data-tilt>
+          <div class="match-top"><span class="match-game">EXILERS / SHOWCASE</span><span class="match-status">SAMPLE DISPLAY</span></div>
+          <div class="versus">
+            <div class="team winner"><div class="team-logo">EX</div><strong>EXILERS</strong><small>WINNER</small></div>
+            <div class="score">2 : 1<small>FINAL SCORE</small></div>
+            <div class="team"><div class="team-logo">OP</div><strong>OPPOSITION</strong><small>CHALLENGER</small></div>
+          </div>
+          <div class="match-bottom"><span>Competitive showcase</span><span class="winner-label">EXILERS VICTORY</span></div>
+        </article>
+        <article class="match-card reveal delay-1" data-tilt>
+          <div class="match-top"><span class="match-game">EXILERS / SHOWCASE</span><span class="match-status">SAMPLE DISPLAY</span></div>
+          <div class="versus">
+            <div class="team"><div class="team-logo">AL</div><strong>ALPHA UNIT</strong><small>CHALLENGER</small></div>
+            <div class="score">1 : 2<small>FINAL SCORE</small></div>
+            <div class="team winner"><div class="team-logo">NX</div><strong>NEXT LEVEL</strong><small>WINNER</small></div>
+          </div>
+          <div class="match-bottom"><span>Community showdown</span><span class="winner-label">NEXT LEVEL VICTORY</span></div>
+        </article>
+        <article class="match-card reveal" data-tilt>
+          <div class="match-top"><span class="match-game">EXILERS / SHOWCASE</span><span class="match-status">SAMPLE DISPLAY</span></div>
+          <div class="versus">
+            <div class="team winner"><div class="team-logo">VX</div><strong>VORTEX</strong><small>WINNER</small></div>
+            <div class="score">3 : 0<small>FINAL SCORE</small></div>
+            <div class="team"><div class="team-logo">ST</div><strong>STRIKE TEAM</strong><small>CHALLENGER</small></div>
+          </div>
+          <div class="match-bottom"><span>Featured match</span><span class="winner-label">VORTEX VICTORY</span></div>
+        </article>
+        <article class="match-card reveal delay-1" data-tilt>
+          <div class="match-top"><span class="match-game">EXILERS / SHOWCASE</span><span class="match-status">SAMPLE DISPLAY</span></div>
+          <div class="versus">
+            <div class="team"><div class="team-logo">BL</div><strong>BLACKOUT</strong><small>CHALLENGER</small></div>
+            <div class="score">2 : 3<small>FINAL SCORE</small></div>
+            <div class="team winner"><div class="team-logo">EL</div><strong>ELITE FIVE</strong><small>WINNER</small></div>
+          </div>
+          <div class="match-bottom"><span>Featured match</span><span class="winner-label">ELITE FIVE VICTORY</span></div>
+        </article>
+      </div>
+      <p class="results-note">Scoreboard cards are design examples, not verified match records. Replace teams, scores, and statuses with confirmed results before publishing.</p>
+    </div>
+  </section>
 
-<section id="results"><div class="container">
-<div class="section-head reveal"><div class="kicker">The scoreboard</div><h2>Match results.</h2><p class="intro">Example scoreboard layout. Replace sample scores with confirmed results from your events.</p></div>
-<div class="results reveal">
-<div class="result-head"><span>Team / player</span><span>Score</span><span>Opponent</span><span>Date</span></div>
-<div class="result"><div class="team winner">Exilers Alpha</div><div class="score">3 — 1</div><div class="team">Night Shift</div><div class="result-date">Sample</div></div>
-<div class="result"><div class="team">Void Unit</div><div class="score">1 — 2</div><div class="team winner">Exilers Core</div><div class="result-date">Sample</div></div>
-<div class="result"><div class="team winner">Exilers Prime</div><div class="score">2 — 0</div><div class="team">Rogue Squad</div><div class="result-date">Sample</div></div>
-</div>
-</div></section>
+  <section id="team">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>04</span> / THE PEOPLE BEHIND THE HQ</div><h2 class="section-title">THE MINDS.<br><span class="outline">THE MISSION.</span></h2></div>
+        <p class="section-note">The people shaping the experience, keeping the community moving, and building what's next.</p>
+      </div>
+      <div class="team-grid">
+        <article class="profile-card reveal" data-tilt>
+          <div class="profile-art"></div><div class="profile-initial">H</div>
+          <div class="profile-top"><span>FOUNDING LEADERSHIP</span><span>01 / 03</span></div>
+          <div class="profile-bottom"><div class="profile-role">OWNER</div><h3 class="profile-name">HASSAN SYED</h3><p class="profile-desc">Leading the vision and direction of EXILERS HQ.</p><div class="profile-bottom-line"><span>EXILERS HQ / CORE</span><span>↗</span></div></div>
+        </article>
+        <article class="profile-card reveal delay-1" data-tilt>
+          <div class="profile-art"></div><div class="profile-initial">B</div>
+          <div class="profile-top"><span>FOUNDING LEADERSHIP</span><span>02 / 03</span></div>
+          <div class="profile-bottom"><div class="profile-role">OWNER</div><h3 class="profile-name">BURHAN</h3><p class="profile-desc">Helping shape the community's future and standards.</p><div class="profile-bottom-line"><span>EXILERS HQ / CORE</span><span>↗</span></div></div>
+        </article>
+        <article class="profile-card reveal delay-2" data-tilt>
+          <div class="profile-art"></div><div class="profile-initial">I</div>
+          <div class="profile-top"><span>FOUNDING LEADERSHIP</span><span>03 / 03</span></div>
+          <div class="profile-bottom"><div class="profile-role">OWNER</div><h3 class="profile-name">IBRAHIM</h3><p class="profile-desc">Building the foundation for a stronger gaming culture.</p><div class="profile-bottom-line"><span>EXILERS HQ / CORE</span><span>↗</span></div></div>
+        </article>
+      </div>
+      <div class="staff-divider reveal">MANAGEMENT / OPERATIONS</div>
+      <div class="management-grid">
+        <article class="management-card reveal"><div class="management-avatar">Z</div><div class="management-info"><small>Management</small><strong>Zindagi</strong><span>Community operations</span></div></article>
+        <article class="management-card reveal delay-1"><div class="management-avatar">A</div><div class="management-info"><small>Management</small><strong>Amin</strong><span>Community operations</span></div></article>
+        <article class="management-card reveal delay-2"><div class="management-avatar">F</div><div class="management-info"><small>Management</small><strong>Faizan</strong><span>Community operations</span></div></article>
+      </div>
+    </div>
+  </section>
 
-<section id="staff"><div class="container">
-<div class="section-head reveal"><div class="kicker">The people behind it</div><h2>Meet the staff.</h2><p class="intro">The team keeping the community organized, active, and ready for the next event.</p></div>
-<div class="staff-group"><div class="staff-group-title reveal">Owners</div><div class="grid staff-grid">
-<article class="staff glass reveal"><div class="avatar">HS</div><div><h3>Hassan Syed</h3><p>Community Owner</p></div><span class="role">OWNER</span></article>
-<article class="staff glass reveal"><div class="avatar">B</div><div><h3>Burhan</h3><p>Community Owner</p></div><span class="role">OWNER</span></article>
-<article class="staff glass reveal"><div class="avatar">I</div><div><h3>Ibrahim</h3><p>Community Owner</p></div><span class="role">OWNER</span></article>
-</div></div>
-<div class="staff-group"><div class="staff-group-title reveal">Management</div><div class="grid staff-grid">
-<article class="staff glass reveal"><div class="avatar">Z</div><div><h3>Zindagi</h3><p>Community Management</p></div><span class="role">MGMT</span></article>
-<article class="staff glass reveal"><div class="avatar">A</div><div><h3>Amin</h3><p>Community Management</p></div><span class="role">MGMT</span></article>
-<article class="staff glass reveal"><div class="avatar">F</div><div><h3>Faizan</h3><p>Community Management</p></div><span class="role">MGMT</span></article>
-</div></div>
-</div></section>
+  <section class="music-section" id="music">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>05</span> / THE SOUNDTRACK</div><h2 class="section-title">SET THE<br><span class="outline">FREQUENCY.</span></h2></div>
+        <p class="section-note">Lock in with your playlist or bring a video into the room. Paste a supported Spotify or YouTube link to load it here.</p>
+      </div>
+      <div class="music-grid">
+        <article class="music-panel reveal">
+          <div class="music-heading"><div><small>01 / STREAMING PLAYER</small><h3>SPOTIFY</h3></div><div class="music-icon">♫</div></div>
+          <form class="music-form" id="spotifyForm"><input id="spotifyInput" type="url" placeholder="Paste Spotify track, album or playlist link" aria-label="Spotify link" required><button type="submit">LOAD ↗</button></form>
+          <div class="player-area" id="spotifyPlayer"><div class="player-hint">Your soundtrack, your rules.<br>Paste a Spotify link above to load the embedded player.</div></div>
+          <p class="music-foot">Spotify content is provided by Spotify. Playback and account restrictions may apply. <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer">Open Spotify ↗</a></p>
+        </article>
+        <article class="music-panel reveal delay-1">
+          <div class="music-heading"><div><small>02 / VIDEO PLAYER</small><h3>YOUTUBE</h3></div><div class="music-icon">▶</div></div>
+          <form class="music-form" id="youtubeForm"><input id="youtubeInput" type="url" placeholder="Paste a YouTube video or embed link" aria-label="YouTube link" required><button type="submit">LOAD ↗</button></form>
+          <div class="player-area" id="youtubePlayer"><div class="player-hint">Music videos, mixes, and highlights.<br>Paste a YouTube link above to load the video player.</div></div>
+          <p class="music-foot">Embedded videos follow YouTube's availability and playback rules. <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Open YouTube ↗</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section id="gallery"><div class="container">
-<div class="section-head reveal"><div class="kicker">Inside the community</div><h2>Moments worth keeping.</h2><p class="intro">A visual wall for match highlights, event memories, and community milestones. Select a panel to expand it. Replace the artwork with your screenshots when ready.</p></div>
-<div class="grid gallery-grid">
-<button class="gallery-item reveal" data-title="The Arena"><span class="scene"></span><span class="gallery-caption">The Arena<small>Competition moments</small></span></button>
-<button class="gallery-item reveal" data-title="Squad Goals"><span class="scene"></span><span class="gallery-caption">Squad Goals<small>Better together</small></span></button>
-<button class="gallery-item reveal" data-title="Championship Night"><span class="scene"></span><span class="gallery-caption">Championship Night<small>Big-stage energy</small></span></button>
-<button class="gallery-item reveal" data-title="Community"><span class="scene"></span><span class="gallery-caption">Community<small>Players make it</small></span></button>
-<button class="gallery-item reveal" data-title="Victory"><span class="scene"></span><span class="gallery-caption">Victory<small>Earned, never given</small></span></button>
-</div>
-</div></section>
+  <section id="community">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>06</span> / MORE THAN THE MATCH</div><h2 class="section-title">FIND YOUR<br><span class="outline">PEOPLE.</span></h2></div>
+        <p class="section-note">The best part of gaming isn't always the win. It's the people you meet, the moments you share, and the next challenge you take on together.</p>
+      </div>
+      <div class="community-grid">
+        <div class="community-feature reveal">
+          <div class="kicker">YOUR NEXT SQUAD STARTS HERE</div>
+          <div><h3>ONE COMMUNITY.<br>ENDLESS<br>POSSIBILITIES.</h3><p>Find teammates, join conversations, discover events, and make your mark in a space built around gaming.</p></div>
+          <div><a class="btn btn-primary" href="#join">FIND YOUR PLACE <span class="btn-arrow">↗</span></a></div>
+        </div>
+        <div class="community-mini-grid">
+          <article class="community-mini reveal delay-1"><div class="mini-symbol">↗</div><div><strong>EVENT CULTURE</strong><p>Regular opportunities to connect, compete, and create shared memories.</p></div></article>
+          <article class="community-mini reveal delay-2"><div class="mini-symbol">◎</div><div><strong>REAL CONNECTIONS</strong><p>Meet players who share your games, interests, and competitive drive.</p></div></article>
+          <article class="community-mini reveal delay-1"><div class="mini-symbol">✳</div><div><strong>ROOM TO GROW</strong><p>Develop your skills, discover teams, and find your own way to contribute.</p></div></article>
+          <article class="community-mini reveal delay-2"><div class="mini-symbol">∞</div><div><strong>ALWAYS EVOLVING</strong><p>New ideas, new events, and a community that keeps moving forward.</p></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="music"><div class="container">
-<div class="section-head reveal"><div class="kicker">Set the atmosphere</div><h2>Your soundtrack.</h2><p class="intro">Paste a Spotify share link or YouTube video link to load the official embedded player.</p></div>
-<div class="grid music-grid">
-<article class="music-card glass reveal"><div class="music-heading"><div class="music-icon">♫</div><div><h3>Spotify player</h3><p>Tracks, albums and playlists</p></div></div><label class="field-label" for="spotifyUrl">Spotify share link</label><div class="input-row"><input id="spotifyUrl" type="url" placeholder="https://open.spotify.com/playlist/..."><button class="btn white" id="loadSpotify">Load</button></div><div class="embed" id="spotifyEmbed" aria-live="polite">Paste a Spotify track, album, or playlist link to load it here.</div></article>
-<article class="music-card glass reveal"><div class="music-heading"><div class="music-icon">▷</div><div><h3>YouTube player</h3><p>Videos and music mixes</p></div></div><label class="field-label" for="youtubeUrl">YouTube video link</label><div class="input-row"><input id="youtubeUrl" type="url" placeholder="https://youtube.com/watch?v=..."><button class="btn white" id="loadYoutube">Load</button></div><div class="embed" id="youtubeEmbed" aria-live="polite">Paste a YouTube video link to load the player here.</div></article>
-</div>
-</div></section>
+  <section id="gallery">
+    <div class="container">
+      <div class="section-top reveal">
+        <div><div class="kicker"><span>07</span> / MOMENTS THAT STAY</div><h2 class="section-title">INSIDE THE<br><span class="outline">UNIVERSE.</span></h2></div>
+        <p class="section-note">A visual window into the gaming world. Select any frame to open it full screen.</p>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item reveal" data-image="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=90" aria-label="Open competitive gaming gallery image"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1100&q=85" alt="Esports gaming event" loading="lazy"><span class="gallery-caption"><strong>THE COMPETITIVE EDGE</strong><span>↗</span></span></button>
+        <button class="gallery-item reveal delay-1" data-image="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1800&q=90" aria-label="Open gaming setup gallery image"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=85" alt="Gaming setup with illuminated screens" loading="lazy"><span class="gallery-caption"><strong>THE SETUP</strong><span>↗</span></span></button>
+        <button class="gallery-item reveal delay-2" data-image="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1800&q=90" aria-label="Open gaming hardware gallery image"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=85" alt="Gaming hardware and screens" loading="lazy"><span class="gallery-caption"><strong>BUILT TO PLAY</strong><span>↗</span></span></button>
+        <button class="gallery-item reveal" data-image="https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1800&q=90" aria-label="Open gaming peripherals gallery image"><img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=900&q=85" alt="Keyboard and gaming peripherals" loading="lazy"><span class="gallery-caption"><strong>THE DETAILS</strong><span>↗</span></span></button>
+        <button class="gallery-item reveal delay-1" data-image="https://images.unsplash.com/photo-1592840496694-26d035b52b48?auto=format&fit=crop&w=1800&q=90" aria-label="Open gaming room gallery image"><img src="https://images.unsplash.com/photo-1592840496694-26d035b52b48?auto=format&fit=crop&w=900&q=85" alt="Gaming room with monitor" loading="lazy"><span class="gallery-caption"><strong>AFTER HOURS</strong><span>↗</span></span></button>
+        <button class="gallery-item reveal delay-2" data-image="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=1800&q=90" aria-label="Open gaming controller gallery image"><img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&w=900&q=85" alt="Gaming controller and gaming equipment" loading="lazy"><span class="gallery-caption"><strong>GAME ON</strong><span>↗</span></span></button>
+      </div>
+      <p class="results-note">Gallery imagery is illustrative gaming photography, not verified EXILERS HQ event photography. Swap these images for your own screenshots and community highlights for an authentic showcase.</p>
+    </div>
+  </section>
 
-<section id="faq"><div class="container">
-<div class="section-head reveal"><div class="kicker">Good to know</div><h2>Questions, answered.</h2><p class="intro">Everything you need to get started with EXILERS HQ.</p></div>
-<div class="faq-list reveal">
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How do I join EXILERS HQ?</span><span class="plus">+</span></button><div class="faq-a"><div><p>Use the Join Community button to open Discord. For direct entry into your server, replace the Discord links in this file with your official EXILERS HQ invitation URL.</p></div></div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>How can I enter a tournament?</span><span class="plus">+</span></button><div class="faq-a"><div><p>Check the tournament announcement for the game, format, team-size requirements, and deadline. Follow the registration instructions provided by the event staff.</p></div></div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Are events open to everyone?</span><span class="plus">+</span></button><div class="faq-a"><div><p>Eligibility may vary by event. Read the published rules and requirements, and ask the organizers if you are unsure whether you or your team can participate.</p></div></div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Where are results and announcements posted?</span><span class="plus">+</span></button><div class="faq-a"><div><p>Follow official community announcements for confirmed schedules, brackets, match results, and event changes.</p></div></div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>What are the community rules?</span><span class="plus">+</span></button><div class="faq-a"><div><p>Respect members, follow event rules, avoid harassment and cheating, and listen to staff guidance. Read the full published community rules when joining.</p></div></div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Can I host an event with EXILERS HQ?</span><span class="plus">+</span></button><div class="faq-a"><div><p>Contact management with your game, proposed format, timing, and prize details. The team can review your idea and coordinate the next steps.</p></div></div></div>
-</div></div></section>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery image">×</button>
+    <img id="lightboxImage" src="" alt="Expanded gallery image">
+  </div>
 
-<section id="contact"><div class="container"><div class="cta reveal">
-<div class="kicker">Your next chapter starts here</div><h2>Join EXILERS HQ<br><span>Today.</span></h2>
-<p>Meet your squad, find your competition, and be part of what comes next. The lobby is waiting.</p>
-<div class="cta-actions"><a class="btn white" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Open Discord ↗</a><a class="btn" href="#tournaments">Explore tournaments</a></div>
-</div></div></section>
+  <section id="faq">
+    <div class="container faq-layout">
+      <div class="faq-intro reveal-left">
+        <div class="kicker"><span>08</span> / GOOD TO KNOW</div>
+        <h2 class="section-title">QUESTIONS.<br><span class="outline">ANSWERED.</span></h2>
+        <p>New to EXILERS HQ? Here's a quick guide to joining in, finding events, and getting involved.</p>
+        <a class="btn" href="#join" style="margin-top:25px">JOIN THE COMMUNITY ↗</a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item open"><button class="faq-question" aria-expanded="true"><span>What is EXILERS HQ?</span><span>+</span></button><div class="faq-answer"><div><p>EXILERS HQ is a gaming community concept focused on connecting players, hosting events, and creating competitive and social gaming experiences. Join the official community for the current games and activities.</p></div></div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How do I join the community?</span><span>+</span></button><div class="faq-answer"><div><p>Use the official EXILERS HQ Discord invitation linked in the Join section. Follow the server's welcome instructions and community rules once you arrive.</p></div></div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How do I register for tournaments?</span><span>+</span></button><div class="faq-answer"><div><p>Check official announcements for event dates, eligibility, team sizes, registration instructions, rules, and any prize information. Only treat an event as confirmed when it has been announced by the EXILERS HQ team.</p></div></div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Are events free to enter?</span><span>+</span></button><div class="faq-answer"><div><p>Entry requirements can vary by event. Check the official event announcement for any fees, eligibility requirements, prize terms, and registration deadlines.</p></div></div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Can I become a staff member?</span><span>+</span></button><div class="faq-answer"><div><p>Staff recruitment depends on community needs. Watch the official announcements and follow any application process shared by the EXILERS HQ management team.</p></div></div></div>
+        <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Where can I find match results?</span><span>+</span></button><div class="faq-answer"><div><p>Confirmed scores and standings should be published through official event announcements. The scoreboard on this website is a visual showcase until real match data is added.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="join">
+    <div class="cta-inner reveal">
+      <div class="cta-content">
+        <div class="cta-kicker">THIS IS YOUR INVITATION / EXILERS HQ</div>
+        <h2>YOUR PEOPLE.<br><span>YOUR GAME.</span><br>YOUR LEGACY.</h2>
+        <p>Step into a community built around competition, connection, and the moments that make gaming unforgettable. Your next chapter starts here.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" id="discordButton" href="https://discord.com/" target="_blank" rel="noopener noreferrer">JOIN EXILERS HQ <span class="btn-arrow">↗</span></a>
+          <a class="btn" href="#events">EXPLORE THE EVENTS ↓</a>
+        </div>
+        <div class="cta-foot"><span>EXILERS HQ / COMMUNITY FIRST</span><span>PLAY BOLD. STAY DIFFERENT.</span></div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="container">
-<div class="footer-top">
-<div class="footer-brand"><a class="brand" href="#home"><img src="logo.png" alt=""><span>EXILERS <em>HQ</em></span></a><p>A premium gaming and event-hosting community. Compete together, connect beyond the game, and keep moving forward.</p></div>
-<div><div class="footer-title">Explore</div><div class="footer-links"><a href="#about">About the community</a><a href="#tournaments">Tournaments & events</a><a href="#results">Match results</a><a href="#staff">Staff team</a></div></div>
-<div><div class="footer-title">Community</div><div class="footer-links"><a href="https://discord.com/app" target="_blank" rel="noopener noreferrer">Discord ↗</a><a href="#music">Music players</a><a href="#faq">FAQ</a><a href="#contact">Contact / Join</a></div></div>
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a class="brand" href="#home"><span class="brand-icon">X</span><span>EXILERS HQ<small>BEYOND ORDINARY</small></span></a>
+      <p>A gaming community for people who play with purpose. Find your people, compete with confidence, and make every moment count.</p>
+    </div>
+    <div class="footer-col"><h4>EXPLORE</h4><a href="#about">Our Philosophy</a><a href="#events">Events & Tournaments</a><a href="#results">Match Results</a><a href="#team">Our Team</a></div>
+    <div class="footer-col"><h4>EXPERIENCE</h4><a href="#music">Music Hub</a><a href="#community">Community</a><a href="#gallery">Gallery</a><a href="#faq">FAQ</a></div>
+    <div class="footer-col"><h4>CONNECT</h4><a id="footerDiscord" href="https://discord.com/" target="_blank" rel="noopener noreferrer">Discord ↗</a><a href="#join">Join EXILERS HQ</a><a href="#home">Back to top ↑</a></div>
+  </div>
+  <div class="footer-bottom"><span>© <span id="year"></span> EXILERS HQ. ALL RIGHTS RESERVED.</span><span>DESIGNED FOR THE NEXT LEVEL.</span><a href="#home">RETURN TO TOP ↑</a></div>
+</footer>
+
+<a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+<div class="announcement" id="announcement" role="status">
+  <div class="announcement-head"><span><span class="live-dot" style="display:inline-block;margin-right:8px"></span>EXILERS HQ / NOTICE</span><button class="announcement-close" id="announcementClose" aria-label="Dismiss announcement">×</button></div>
+  <strong>WELCOME TO THE HQ.</strong>
+  <p>Explore the platform and connect with the community. Follow official announcements for confirmed events and updates.</p>
+  <a class="announcement-link" href="#join">FIND YOUR PLACE ↗</a>
 </div>
-<div class="footer-bottom"><span>© <span id="year"></span> EXILERS HQ. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
-</div></footer>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery preview"><div class="lightbox-box"><button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">×</button><strong id="lightboxTitle">EXILERS HQ</strong></div></div>
-
-<aside class="announcement glass" id="announcement" hidden aria-label="Announcement">
-<div class="announce-top"><span>Community announcement</span><button class="announce-close" id="announcementClose" aria-label="Close announcement">×</button></div>
-<h3>Exilers Championship</h3><p>Registrations are now open for the next Exilers Championship. Visit the community for event details and entry instructions.</p>
-<a class="btn white" href="https://discord.com/app" target="_blank" rel="noopener noreferrer">View announcement ↗</a>
-</aside>
-
-<div class="floaters"><a class="float" href="https://discord.com/app" target="_blank" rel="noopener noreferrer" aria-label="Join Discord" title="Discord">◈</a><button class="float top" id="backTop" aria-label="Back to top" title="Back to top">↑</button></div>
 
 <script>
-'use strict';
-(() => {
-const $ = (s, r=document) => r.querySelector(s);
-const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-$('#year').textContent = new Date().getFullYear();
+/* =========================================================
+   EXILERS HQ — SITE CONFIGURATION
+   Update these values before publishing the website.
+   ========================================================= */
+const SITE_CONFIG = {
+  // Replace with the real EXILERS HQ Discord invitation.
+  discordInvite: "https://discord.com/",
+  // Set to your official event date/time, including timezone.
+  // Example: "2027-01-15T20:00:00+05:00"
+  nextEventDate: "",
+  announcementDelay: 5000
+};
 
-/* Loading screen: always exits, even if the logo fails to load. */
-const loader = $('#loader');
-const finishLoading = () => loader.classList.add('done');
-window.addEventListener('load', () => setTimeout(finishLoading, reduced ? 0 : 950), {once:true});
-setTimeout(finishLoading, 2800);
+document.getElementById("year").textContent = new Date().getFullYear();
 
-/* Lightweight animated background. */
-const particles = $('#particles');
-if (!reduced) {
-  const amount = innerWidth < 700 ? 18 : 35;
-  for (let i=0; i<amount; i++) {
-    const p = document.createElement('i');
-    p.className = 'particle';
-    p.style.left = Math.random()*100 + '%';
-    p.style.top = Math.random()*100 + '%';
-    p.style.animationDuration = 12 + Math.random()*18 + 's';
-    p.style.animationDelay = -Math.random()*24 + 's';
-    particles.appendChild(p);
-  }
+/* Apply official Discord link to every Discord CTA. */
+function isConfiguredDiscord(url) {
+  return /^https:\/\/discord\.gg\/[a-zA-Z0-9-]+\/?$/.test(url) ||
+         /^https:\/\/discord\.com\/invite\/[a-zA-Z0-9-]+\/?$/.test(url);
+}
+if (isConfiguredDiscord(SITE_CONFIG.discordInvite)) {
+  document.getElementById("discordButton").href = SITE_CONFIG.discordInvite;
+  document.getElementById("footerDiscord").href = SITE_CONFIG.discordInvite;
 }
 
-/* Responsive navigation. */
-const menu = $('#menu'), nav = $('#navLinks');
-menu.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  menu.setAttribute('aria-expanded', String(open));
-});
-$$('#navLinks a').forEach(a => a.addEventListener('click', () => {
-  nav.classList.remove('open');
-  menu.setAttribute('aria-expanded', 'false');
-}));
-document.addEventListener('click', e => {
-  if (!nav.contains(e.target) && !menu.contains(e.target)) {
-    nav.classList.remove('open');
-    menu.setAttribute('aria-expanded', 'false');
+/* Premium loading sequence */
+const loader = document.getElementById("loader");
+const loadPercent = document.getElementById("loadPercent");
+let loadStart = performance.now();
+function updateLoader(now) {
+  const progress = Math.min(100, Math.round(((now - loadStart) / 1900) * 100));
+  loadPercent.textContent = String(progress).padStart(2, "0") + "%";
+  if (progress < 100) requestAnimationFrame(updateLoader);
+  else {
+    setTimeout(() => {
+      loader.classList.add("done");
+      document.body.classList.remove("loading");
+      setTimeout(() => loader.remove(), 1000);
+    }, 150);
   }
-});
+}
+requestAnimationFrame(updateLoader);
 
-/* Scroll reveals. */
-const revealItems = $$('.reveal');
-if ('IntersectionObserver' in window && !reduced) {
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+/* Animated monochrome particle field */
+const canvas = document.getElementById("world");
+const ctx = canvas.getContext("2d", { alpha: true });
+let width = 0, height = 0, particles = [], dpr = 1;
+const pointer = { x: -1000, y: -1000, tx: -1000, ty: -1000 };
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function resizeCanvas() {
+  dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = Math.round(width * dpr);
+  canvas.height = Math.round(height * dpr);
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const count = reducedMotion ? 18 : Math.min(100, Math.floor(width * height / 13000));
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - .5) * .22,
+    vy: (Math.random() - .5) * .22,
+    r: Math.random() * 1.5 + .3,
+    alpha: Math.random() * .45 + .12
+  }));
+}
+function drawParticles() {
+  ctx.clearRect(0, 0, width, height);
+  pointer.x += (pointer.tx - pointer.x) * .06;
+  pointer.y += (pointer.ty - pointer.y) * .06;
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    if (!reducedMotion) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -5) p.x = width + 5;
+      if (p.x > width + 5) p.x = -5;
+      if (p.y < -5) p.y = height + 5;
+      if (p.y > height + 5) p.y = -5;
+      const dx = pointer.x - p.x, dy = pointer.y - p.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 140 && distance > 0) {
+        p.x -= dx / distance * .3;
+        p.y -= dy / distance * .3;
+      }
     }
-  }), {threshold:.12});
-  revealItems.forEach(el => observer.observe(el));
-} else revealItems.forEach(el => el.classList.add('visible'));
-
-/* Counters animate once when visible. */
-const counters = $$('.counter');
-function animateCounter(el) {
-  const target = Number(el.dataset.target) || 0;
-  if (reduced) { el.textContent = target.toLocaleString(); return; }
-  const start = performance.now(), duration = 1450;
-  function tick(now) {
-    const p = Math.min(1, (now-start)/duration);
-    el.textContent = Math.round(target*(1-Math.pow(1-p,4))).toLocaleString();
-    if (p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-if ('IntersectionObserver' in window && !reduced) {
-  const counterObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounter(entry.target);
-      counterObserver.unobserve(entry.target);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${p.alpha})`;
+    ctx.fill();
+    for (let j = i + 1; j < particles.length; j++) {
+      const q = particles[j], dx = p.x - q.x, dy = p.y - q.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 105) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = `rgba(255,255,255,${(1 - distance / 105) * .09})`;
+        ctx.lineWidth = .6;
+        ctx.stroke();
+      }
     }
-  }), {threshold:.5});
-  counters.forEach(el => counterObserver.observe(el));
-} else counters.forEach(animateCounter);
-
-/* Active navigation and back-to-top. */
-const backTop = $('#backTop');
-function updateScroll() {
-  backTop.classList.toggle('visible', scrollY > 450);
-  let active = '';
-  $$('main section[id]').forEach(section => {
-    if (scrollY >= section.offsetTop - 150) active = section.id;
-  });
-  $$('#navLinks a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
-}
-addEventListener('scroll', updateScroll, {passive:true});
-updateScroll();
-backTop.addEventListener('click', () => scrollTo({top:0, behavior:reduced?'auto':'smooth'}));
-
-/* Accordion: keep one answer open at a time. */
-$$('.faq-q').forEach(button => button.addEventListener('click', () => {
-  const item = button.closest('.faq-item');
-  const shouldOpen = !item.classList.contains('open');
-  $$('.faq-item').forEach(other => {
-    other.classList.remove('open');
-    $('.faq-q', other).setAttribute('aria-expanded','false');
-  });
-  if (shouldOpen) {
-    item.classList.add('open');
-    button.setAttribute('aria-expanded','true');
   }
+  if (!reducedMotion) requestAnimationFrame(drawParticles);
+}
+window.addEventListener("resize", resizeCanvas, { passive: true });
+resizeCanvas();
+drawParticles();
+
+/* Custom cursor, glow, and gentle parallax */
+const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursorRing");
+const mouseGlow = document.getElementById("mouseGlow");
+let cursorX = -100, cursorY = -100, ringX = -100, ringY = -100;
+window.addEventListener("pointermove", e => {
+  pointer.tx = e.clientX; pointer.ty = e.clientY;
+  cursorX = e.clientX; cursorY = e.clientY;
+  mouseGlow.style.left = e.clientX + "px";
+  mouseGlow.style.top = e.clientY + "px";
+}, { passive: true });
+
+function animateCursor() {
+  ringX += (cursorX - ringX) * .17;
+  ringY += (cursorY - ringY) * .17;
+  cursor.style.left = cursorX + "px";
+  cursor.style.top = cursorY + "px";
+  cursorRing.style.left = ringX + "px";
+  cursorRing.style.top = ringY + "px";
+  if (!reducedMotion) requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll("a,button,.interactive,.gallery-item").forEach(el => {
+  el.addEventListener("pointerenter", () => cursorRing.classList.add("active"));
+  el.addEventListener("pointerleave", () => cursorRing.classList.remove("active"));
+});
+
+const hero = document.querySelector(".hero");
+const heroImage = document.getElementById("heroImage");
+if (!reducedMotion && window.matchMedia("(pointer:fine)").matches) {
+  hero.addEventListener("pointermove", e => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - .5;
+    const y = (e.clientY - rect.top) / rect.height - .5;
+    heroImage.style.transform = `scale(1.05) translate(${x * -12}px,${y * -9}px)`;
+  });
+  hero.addEventListener("pointerleave", () => heroImage.style.transform = "");
+}
+
+/* Floating navigation and page progress */
+const header = document.getElementById("header");
+const progressBar = document.getElementById("progress");
+const backTop = document.getElementById("backTop");
+function handleScroll() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollable > 0 ? window.scrollY / scrollable * 100 : 0;
+  progressBar.style.width = pct + "%";
+  header.classList.toggle("scrolled", window.scrollY > 35);
+  backTop.classList.toggle("visible", window.scrollY > 500);
+}
+window.addEventListener("scroll", handleScroll, { passive: true });
+handleScroll();
+
+/* Mobile navigation */
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.textContent = isOpen ? "×" : "☰";
+});
+navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+  navLinks.classList.remove("open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.textContent = "☰";
 }));
 
-/* Accessible gallery lightbox. */
-const lightbox = $('#lightbox');
-const lightboxTitle = $('#lightboxTitle');
-let previousFocus = null;
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  if (previousFocus) previousFocus.focus();
-}
-$$('.gallery-item').forEach(button => button.addEventListener('click', () => {
-  previousFocus = button;
-  lightboxTitle.textContent = button.dataset.title || 'EXILERS HQ';
-  lightbox.classList.add('open');
-  $('#lightboxClose').focus();
-}));
-$('#lightboxClose').addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+/* Staggered scroll reveals */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: .12, rootMargin: "0px 0px -35px 0px" });
+document.querySelectorAll(".reveal,.reveal-left").forEach(el => revealObserver.observe(el));
 
-/* Safe URL validation and provider embeds. */
-function validHttps(raw) {
-  try {
-    const url = new URL(raw.trim());
-    return url.protocol === 'https:' ? url : null;
-  } catch (_) { return null; }
-}
-function showNotice(element, message) {
-  element.classList.remove('has-frame');
-  element.replaceChildren(document.createTextNode(message));
-}
-function makeEmbed(element, src, title, height) {
-  const frame = document.createElement('iframe');
-  frame.src = src;
-  frame.title = title;
-  frame.loading = 'lazy';
-  frame.referrerPolicy = 'strict-origin-when-cross-origin';
-  frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-  frame.allowFullscreen = true;
-  frame.style.height = height + 'px';
-  element.replaceChildren(frame);
-  element.classList.add('has-frame');
-}
-$('#loadSpotify').addEventListener('click', () => {
-  const input = $('#spotifyUrl').value.trim();
-  const box = $('#spotifyEmbed');
-  if (!input) return showNotice(box, 'Paste a Spotify share link first.');
-  const url = validHttps(input);
-  if (!url || !['open.spotify.com','www.spotify.com','spotify.com'].includes(url.hostname)) {
-    return showNotice(box, 'Enter a valid HTTPS Spotify share link.');
-  }
-  const parts = url.pathname.split('/').filter(Boolean);
-  const type = parts.length >= 2 ? parts[parts.length-2] : '';
-  const id = parts.length >= 2 ? parts[parts.length-1] : '';
-  if (!['track','album','playlist','episode','show'].includes(type) || !/^[A-Za-z0-9]+$/.test(id)) {
-    return showNotice(box, 'Use a Spotify track, album, playlist, episode, or show share URL.');
-  }
-  makeEmbed(box, 'https://open.spotify.com/embed/' + type + '/' + encodeURIComponent(id), 'Spotify player', 152);
-});
-function getYouTubeId(raw) {
-  const url = validHttps(raw);
-  if (!url) return null;
-  let id = '';
-  if (['youtu.be','www.youtu.be'].includes(url.hostname)) {
-    id = url.pathname.split('/').filter(Boolean)[0] || '';
-  } else if (['youtube.com','www.youtube.com','m.youtube.com','music.youtube.com'].includes(url.hostname)) {
-    if (url.pathname === '/watch') id = url.searchParams.get('v') || '';
-    else if (/^\/(embed|shorts)\/[^/]+/.test(url.pathname)) id = url.pathname.split('/')[2] || '';
-  }
-  return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : null;
-}
-$('#loadYoutube').addEventListener('click', () => {
-  const input = $('#youtubeUrl').value.trim();
-  const box = $('#youtubeEmbed');
-  if (!input) return showNotice(box, 'Paste a YouTube video link first.');
-  const id = getYouTubeId(input);
-  if (!id) return showNotice(box, 'Enter a valid YouTube video, youtu.be, or Shorts URL.');
-  makeEmbed(box, 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?rel=0', 'YouTube video player', 230);
-});
-$('#spotifyUrl').addEventListener('keydown', e => { if (e.key === 'Enter') $('#loadSpotify').click(); });
-$('#youtubeUrl').addEventListener('keydown', e => { if (e.key === 'Enter') $('#loadYoutube').click(); });
+/* Count-up statistics */
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = Number(el.dataset.count || 0);
+    const suffix = el.dataset.suffix || "";
+    const start = performance.now();
+    const duration = 1700;
+    function count(now) {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 4);
+      el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+      if (t < 1) requestAnimationFrame(count);
+    }
+    requestAnimationFrame(count);
+    counterObserver.unobserve(el);
+  });
+}, { threshold: .5 });
+document.querySelectorAll("[data-count]").forEach(el => counterObserver.observe(el));
 
-/* Countdown: intentionally unconfigured until an actual event date is supplied. */
-const EVENT_DATE = '';
+/* 3D tilt on larger screens */
+if (!reducedMotion && window.matchMedia("(pointer:fine)").matches) {
+  document.querySelectorAll("[data-tilt]").forEach(card => {
+    card.addEventListener("pointermove", e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      card.style.transform = `perspective(900px) rotateX(${(0.5-y)*5}deg) rotateY(${(x-0.5)*5}deg) translateY(-3px)`;
+    });
+    card.addEventListener("pointerleave", () => card.style.transform = "");
+  });
+}
+
+/* Live countdown — configure SITE_CONFIG.nextEventDate */
+let countdownTimer;
 function updateCountdown() {
-  const ids = ['days','hours','minutes','seconds'];
-  if (!EVENT_DATE) {
-    ids.forEach(id => $('#'+id).textContent = '--');
+  const status = document.getElementById("countdownStatus");
+  const fields = {
+    days: document.getElementById("days"),
+    hours: document.getElementById("hours"),
+    minutes: document.getElementById("minutes"),
+    seconds: document.getElementById("seconds")
+  };
+  const target = new Date(SITE_CONFIG.nextEventDate).getTime();
+  if (!SITE_CONFIG.nextEventDate || !Number.isFinite(target)) {
+    Object.values(fields).forEach(el => el.textContent = "--");
+    status.textContent = "AWAITING OFFICIAL EVENT DATE";
     return;
   }
-  const target = new Date(EVENT_DATE).getTime();
-  if (!Number.isFinite(target)) {
-    ids.forEach(id => $('#'+id).textContent = '--');
+  const remaining = target - Date.now();
+  if (remaining <= 0) {
+    Object.values(fields).forEach(el => el.textContent = "00");
+    status.textContent = "EVENT TIME REACHED — CHECK OFFICIAL ANNOUNCEMENTS";
     return;
   }
-  const diff = target - Date.now();
-  if (diff <= 0) {
-    ids.forEach(id => $('#'+id).textContent = '00');
-    $('#countdownMessage').textContent = 'The event time has arrived. Check the community for updates.';
-    return;
-  }
-  $('#days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
-  $('#hours').textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
-  $('#minutes').textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
-  $('#seconds').textContent = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  fields.days.textContent = String(Math.floor(remaining / 86400000)).padStart(2, "0");
+  fields.hours.textContent = String(Math.floor((remaining % 86400000) / 3600000)).padStart(2, "0");
+  fields.minutes.textContent = String(Math.floor((remaining % 3600000) / 60000)).padStart(2, "0");
+  fields.seconds.textContent = String(Math.floor((remaining % 60000) / 1000)).padStart(2, "0");
+  status.textContent = "COUNTING DOWN TO THE NEXT EVENT";
 }
 updateCountdown();
-if (EVENT_DATE) setInterval(updateCountdown, 1000);
+countdownTimer = setInterval(updateCountdown, 1000);
 
-/* Announcement appears once per browser session. */
-const announcement = $('#announcement');
-const announcementClose = $('#announcementClose');
-try {
-  if (!sessionStorage.getItem('exilers-announcement-closed')) {
-    setTimeout(() => { announcement.hidden = false; }, 1800);
+/* Spotify link parser and embedded player */
+function spotifyEmbedUrl(raw) {
+  try {
+    const url = new URL(raw);
+    if (!["open.spotify.com", "www.open.spotify.com", "spotify.link"].includes(url.hostname)) return null;
+    if (url.hostname === "spotify.link") return null;
+    const parts = url.pathname.split("/").filter(Boolean);
+    const allowed = ["track", "album", "playlist", "artist", "episode", "show"];
+    const index = parts.findIndex(p => allowed.includes(p));
+    if (index === -1 || !parts[index + 1]) return null;
+    return "https://open.spotify.com/embed/" + parts[index] + "/" + parts[index + 1];
+  } catch { return null; }
+}
+document.getElementById("spotifyForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const url = spotifyEmbedUrl(document.getElementById("spotifyInput").value.trim());
+  const area = document.getElementById("spotifyPlayer");
+  if (!url) {
+    area.innerHTML = '<div class="player-hint">That link could not be recognised. Paste a full Spotify track, album, playlist, artist, or show link from open.spotify.com.</div>';
+    return;
   }
-} catch (_) {}
-announcementClose.addEventListener('click', () => {
-  announcement.hidden = true;
-  try { sessionStorage.setItem('exilers-announcement-closed','1'); } catch (_) {}
+  area.innerHTML = "";
+  const iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.title = "Spotify embedded player";
+  iframe.height = "152";
+  iframe.loading = "lazy";
+  iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+  iframe.setAttribute("allowfullscreen", "");
+  area.appendChild(iframe);
 });
 
-/* Smooth anchor navigation, without intercepting external links. */
-$$('a[href^="#"]').forEach(link => link.addEventListener('click', e => {
-  const target = $(link.getAttribute('href'));
-  if (!target) return;
+/* YouTube link parser and privacy-enhanced embedded player */
+function youtubeEmbedUrl(raw) {
+  try {
+    const url = new URL(raw);
+    let id = "";
+    if (["www.youtube.com", "youtube.com", "m.youtube.com", "youtube-nocookie.com"].includes(url.hostname)) {
+      if (url.pathname === "/watch") id = url.searchParams.get("v") || "";
+      else if (url.pathname.startsWith("/embed/") || url.pathname.startsWith("/shorts/")) id = url.pathname.split("/")[2] || "";
+    } else if (url.hostname === "youtu.be") {
+      id = url.pathname.split("/").filter(Boolean)[0] || "";
+    } else return null;
+    return /^[A-Za-z0-9_-]{11}$/.test(id) ? "https://www.youtube-nocookie.com/embed/" + id : null;
+  } catch { return null; }
+}
+document.getElementById("youtubeForm").addEventListener("submit", e => {
   e.preventDefault();
-  target.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
-  history.replaceState(null,'',link.getAttribute('href'));
-}));
-})();
+  const url = youtubeEmbedUrl(document.getElementById("youtubeInput").value.trim());
+  const area = document.getElementById("youtubePlayer");
+  if (!url) {
+    area.innerHTML = '<div class="player-hint">That link could not be recognised. Paste a standard YouTube video, Shorts, youtu.be, or embed link.</div>';
+    return;
+  }
+  area.innerHTML = "";
+  const iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.title = "YouTube video player";
+  iframe.loading = "lazy";
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  iframe.style.aspectRatio = "16 / 9";
+  area.appendChild(iframe);
+});
+
+/* Gallery lightbox */
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  document.body.style.overflow = "";
+  lightboxImage.src = "";
+}
+document.querySelectorAll(".gallery-item").forEach(item => {
+  item.addEventListener("click", () => {
+    lightboxImage.src = item.dataset.image;
+    lightboxImage.alt = item.querySelector("img")?.alt || "EXILERS HQ gallery image";
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+});
+document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+
+/* FAQ accordion */
+document.querySelectorAll(".faq-question").forEach(button => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".faq-item");
+    const shouldOpen = !item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(other => {
+      other.classList.remove("open");
+      other.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+    });
+    if (shouldOpen) {
+      item.classList.add("open");
+      button.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+/* Dismissible announcement */
+const announcement = document.getElementById("announcement");
+const announcementClose = document.getElementById("announcementClose");
+let announcementTimer = setTimeout(() => announcement.classList.add("show"), SITE_CONFIG.announcementDelay);
+function dismissAnnouncement() {
+  announcement.classList.remove("show");
+  clearTimeout(announcementTimer);
+}
+announcementClose.addEventListener("click", dismissAnnouncement);
+announcement.querySelector("a").addEventListener("click", dismissAnnouncement);
+
+/* Pause animated ticker while the tab is hidden to save resources */
+document.addEventListener("visibilitychange", () => {
+  document.querySelectorAll(".ticker-track").forEach(el => {
+    el.style.animationPlayState = document.hidden ? "paused" : "";
+  });
+});
 </script>
 </body>
 </html>
